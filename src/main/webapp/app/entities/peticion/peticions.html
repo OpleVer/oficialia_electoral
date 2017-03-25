@@ -1,0 +1,86 @@
+<div>
+    <h2>Peticions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="peticion.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Peticion
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numero_peticion"><span data-translate="oficialiaElectoralApp.peticion.numero_peticion">Numero Peticion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nomsolicitante"><span>Nomsolicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paternosolicitante"><span>Paternosolicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="maternosolicitante"><span>Maternosolicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cargosolicitante"><span>Cargosolicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="direccionsolicitante"><span>Direccionsolicitante</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechayhora"><span>Fechayhora</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="actocertificar"><span>Actocertificar</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="oficio"><span>Oficio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="oficio2"><span>Oficio 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="peticion in vm.peticions track by peticion.id">
+                    <td><a ui-sref="peticion-detail({id:peticion.id})">{{peticion.id}}</a></td>
+                    <td>{{peticion.numero_peticion}}</td>
+                    <td>{{peticion.nomsolicitante}}</td>
+                    <td>{{peticion.paternosolicitante}}</td>
+                    <td>{{peticion.maternosolicitante}}</td>
+                    <td>{{peticion.cargosolicitante}}</td>
+                    <td>{{peticion.direccionsolicitante}}</td>
+                    <td>{{peticion.fechayhora | date:'medium'}}</td>
+                    <td>{{peticion.actocertificar}}</td>
+                    <td>
+                        <a ng-if="peticion.oficio" ng-click="vm.openFile(peticion.oficioContentType, peticion.oficio)">open</a>
+                        <span ng-if="peticion.oficio">{{peticion.oficioContentType}}, {{vm.byteSize(peticion.oficio)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="peticion.oficio2" ng-click="vm.openFile(peticion.oficio2ContentType, peticion.oficio2)">
+                            <img data-ng-src="{{'data:' + peticion.oficio2ContentType + ';base64,' + peticion.oficio2}}" style="max-height: 30px;" alt="peticion image"/>
+                        </a>
+                        <span ng-if="peticion.oficio2">{{peticion.oficio2ContentType}}, {{vm.byteSize(peticion.oficio2)}}</span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="peticion-detail({id:peticion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="peticion.edit({id:peticion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="peticion.delete({id:peticion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

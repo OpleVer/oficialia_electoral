@@ -1,0 +1,162 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPeticionLabel">Create or edit a Peticion</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.peticion.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.peticion.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.numero_peticion" for="field_numero_peticion">Numero Peticion</label>
+            <input type="text" class="form-control" name="numero_peticion" id="field_numero_peticion"
+                    ng-model="vm.peticion.numero_peticion"
+                    required/>
+            <div ng-show="editForm.numero_peticion.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numero_peticion.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nomsolicitante">Nomsolicitante</label>
+            <input type="text" class="form-control" name="nomsolicitante" id="field_nomsolicitante"
+                    ng-model="vm.peticion.nomsolicitante"
+                    required/>
+            <div ng-show="editForm.nomsolicitante.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nomsolicitante.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paternosolicitante">Paternosolicitante</label>
+            <input type="text" class="form-control" name="paternosolicitante" id="field_paternosolicitante"
+                    ng-model="vm.peticion.paternosolicitante"
+                    required/>
+            <div ng-show="editForm.paternosolicitante.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.paternosolicitante.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_maternosolicitante">Maternosolicitante</label>
+            <input type="text" class="form-control" name="maternosolicitante" id="field_maternosolicitante"
+                    ng-model="vm.peticion.maternosolicitante"
+                    required/>
+            <div ng-show="editForm.maternosolicitante.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.maternosolicitante.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cargosolicitante">Cargosolicitante</label>
+            <input type="text" class="form-control" name="cargosolicitante" id="field_cargosolicitante"
+                    ng-model="vm.peticion.cargosolicitante"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_direccionsolicitante">Direccionsolicitante</label>
+            <input type="text" class="form-control" name="direccionsolicitante" id="field_direccionsolicitante"
+                    ng-model="vm.peticion.direccionsolicitante"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fechayhora">Fechayhora</label>
+                <div class="input-group">
+                    <input id="field_fechayhora" type="text" class="form-control" name="fechayhora" datetime-picker="{{dateformat}}" ng-model="vm.peticion.fechayhora" is-open="vm.datePickerOpenStatus.fechayhora"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechayhora')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.fechayhora.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fechayhora.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.fechayhora.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_actocertificar">Actocertificar</label>
+            <input type="text" class="form-control" name="actocertificar" id="field_actocertificar"
+                    ng-model="vm.peticion.actocertificar"
+                    required/>
+            <div ng-show="editForm.actocertificar.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.actocertificar.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setOficio($file, vm.peticion)">
+            <label class="control-label" for="field_oficio">Oficio</label>
+            <div>
+                <div ng-if="vm.peticion.oficio" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.oficioContentType, vm.peticion.oficio)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.oficioContentType}}, {{vm.byteSize(vm.peticion.oficio)}}</span>
+                    <button type="button" ng-click="vm.peticion.oficio=null;vm.peticion.oficioContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setOficio($file, vm.peticion)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="oficio" id="field_oficio"
+                    ng-model="vm.peticion.oficio"
+                    />
+            <input type="hidden" class="form-control" name="oficioContentType" id="field_oficioContentType"
+                    ng-model="vm.peticion.oficioContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setOficio2($file, vm.peticion)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_oficio2">Oficio 2</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.peticion.oficio2ContentType + ';base64,' + vm.peticion.oficio2}}" style="max-height: 100px;" ng-if="vm.peticion.oficio2" alt="peticion image"/>
+                <div ng-if="vm.peticion.oficio2" class="help-block clearfix">
+                    <span class="pull-left">{{vm.peticion.oficio2ContentType}}, {{vm.byteSize(vm.peticion.oficio2)}}</span>
+                    <button type="button" ng-click="vm.peticion.oficio2=null;vm.peticion.oficio2ContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setOficio2($file, vm.peticion)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="oficio2" id="field_oficio2"
+                    ng-model="vm.peticion.oficio2"
+                    />
+            <input type="hidden" class="form-control" name="oficio2ContentType" id="field_oficio2ContentType"
+                    ng-model="vm.peticion.oficio2ContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

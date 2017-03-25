@@ -1,0 +1,67 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOrigenLabel">Create or edit a Origen</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.origen.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.origen.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_zona">Zona</label>
+            <input type="text" class="form-control" name="zona" id="field_zona"
+                    ng-model="vm.origen.zona"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_disrito">Disrito</label>
+            <select class="form-control" name="disrito" ng-model="vm.origen.disrito" id="field_disrito">
+                <option value="Panuco01">Panuco01</option>
+                <option value="Tantoyuca02">Tantoyuca02</option>
+                <option value="Tuxpan03">Tuxpan03</option>
+                <option value="Alamo04">Alamo04</option>
+                <option value="PozaRica05">PozaRica05</option>
+                <option value="Papantla06">Papantla06</option>
+                <option value="MartinezDeLaTorre07">MartinezDeLaTorre07</option>
+                <option value="Misantla08">Misantla08</option>
+                <option value="Perote09">Perote09</option>
+                <option value="Xalapa10">Xalapa10</option>
+                <option value="Xalapa11">Xalapa11</option>
+                <option value="Coatepec12">Coatepec12</option>
+                <option value="EmilianoZapata13">EmilianoZapata13</option>
+                <option value="Veracruz14">Veracruz14</option>
+                <option value="Veracruz15">Veracruz15</option>
+                <option value="BocaDelRio16">BocaDelRio16</option>
+                <option value="Medellin17">Medellin17</option>
+                <option value="Huatusco18">Huatusco18</option>
+                <option value="Cordoba19">Cordoba19</option>
+                <option value="Orizaba20">Orizaba20</option>
+                <option value="CamerinoZMendoza21">CamerinoZMendoza21</option>
+                <option value="Zongolica22">Zongolica22</option>
+                <option value="Cosamaloapan23">Cosamaloapan23</option>
+                <option value="SantiagoTuxtla24">SantiagoTuxtla24</option>
+                <option value="SanAndresTuxtla25">SanAndresTuxtla25</option>
+                <option value="Cosoleacaque26">Cosoleacaque26</option>
+                <option value="Acayucan27">Acayucan27</option>
+                <option value="Minatitlan28">Minatitlan28</option>
+                <option value="Coatzacoalcos29">Coatzacoalcos29</option>
+                <option value="Coatzacoalcos30">Coatzacoalcos30</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

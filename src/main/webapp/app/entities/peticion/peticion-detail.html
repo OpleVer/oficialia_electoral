@@ -1,0 +1,67 @@
+
+<div>
+    <h2><span>Peticion</span> {{vm.peticion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="oficialiaElectoralApp.peticion.numero_peticion">Numero Peticion</span></dt>
+        <dd>
+            <span>{{vm.peticion.numero_peticion}}</span>
+        </dd>
+        <dt><span>Nomsolicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.nomsolicitante}}</span>
+        </dd>
+        <dt><span>Paternosolicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.paternosolicitante}}</span>
+        </dd>
+        <dt><span>Maternosolicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.maternosolicitante}}</span>
+        </dd>
+        <dt><span>Cargosolicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.cargosolicitante}}</span>
+        </dd>
+        <dt><span>Direccionsolicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.direccionsolicitante}}</span>
+        </dd>
+        <dt><span>Fechayhora</span></dt>
+        <dd>
+            <span>{{vm.peticion.fechayhora | date:'medium'}}</span>
+        </dd>
+        <dt><span>Actocertificar</span></dt>
+        <dd>
+            <span>{{vm.peticion.actocertificar}}</span>
+        </dd>
+        <dt><span>Oficio</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.oficio">
+                <a ng-click="vm.openFile(vm.peticion.oficioContentType, vm.peticion.oficio)">open</a>
+                {{vm.peticion.oficioContentType}}, {{vm.byteSize(vm.peticion.oficio)}}
+            </div>
+        </dd>
+        <dt><span>Oficio 2</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.oficio2">
+                <a ng-click="vm.openFile(vm.peticion.oficio2ContentType, vm.peticion.oficio2)">
+                    <img data-ng-src="{{'data:' + vm.peticion.oficio2ContentType + ';base64,' + vm.peticion.oficio2}}" style="max-width: 100%;" alt="peticion image"/>
+                </a>
+                {{vm.peticion.oficio2ContentType}}, {{vm.byteSize(vm.peticion.oficio2)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
