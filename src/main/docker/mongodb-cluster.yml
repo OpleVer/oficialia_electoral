@@ -1,0 +1,16 @@
+version: '2'
+services:
+    oficialia_electoral-mongodb:
+        image: mongo:3.2.10
+        ports:
+            - "27017:27017"
+        command: mongos --configdb oficialia_electoral-mongodb-config
+    oficialia_electoral-mongodb-node:
+        build:
+            context: .
+            dockerfile: mongodb/MongoDB.Dockerfile
+        command: mongod --replSet rs1 --noprealloc --smallfiles
+    oficialia_electoral-mongodb-config:
+        image: mongo:3.2.10
+        container_name: oficialia_electoral-mongodb-config
+        command: mongod --noprealloc --smallfiles --configsvr --dbpath /data/db

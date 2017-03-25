@@ -1,0 +1,15 @@
+version: '2'
+services:
+    oficialia_electoral-app:
+        image: oficialia_electoral
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATA_MONGODB_URI=mongodb://oficialia_electoral-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=oficialia_electoral
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    oficialia_electoral-mongodb:
+        extends:
+            file: mongodb.yml
+            service: oficialia_electoral-mongodb
