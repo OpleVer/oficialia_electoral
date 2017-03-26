@@ -56,12 +56,6 @@
             "fieldName": "oficio",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "oficio2",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image",
-            "fieldValidateRules": []
         }
     ],
     "dto": "no",

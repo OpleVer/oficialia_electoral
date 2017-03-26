@@ -58,20 +58,6 @@
             }
         };
 
-        vm.setOficio2 = function ($file, peticion) {
-            if ($file && $file.$error === 'pattern') {
-                return;
-            }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        peticion.oficio2 = base64Data;
-                        peticion.oficio2ContentType = $file.type;
-                    });
-                });
-            }
-        };
-
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }

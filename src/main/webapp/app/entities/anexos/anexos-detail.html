@@ -1,0 +1,34 @@
+
+<div>
+    <h2><span>Anexos</span> {{vm.anexos.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Archivoanexo</span></dt>
+        <dd>
+            <div ng-if="vm.anexos.archivoanexo">
+                <a ng-click="vm.openFile(vm.anexos.archivoanexoContentType, vm.anexos.archivoanexo)">open</a>
+                {{vm.anexos.archivoanexoContentType}}, {{vm.byteSize(vm.anexos.archivoanexo)}}
+            </div>
+        </dd>
+        <dt><span>Descripcion</span></dt>
+        <dd>
+            <span>{{vm.anexos.descripcion}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.anexos.numero_peticion">Numero Peticion</span></dt>
+        <dd>
+            <span>{{vm.anexos.numero_peticion}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="anexos-detail.edit({id:vm.anexos.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

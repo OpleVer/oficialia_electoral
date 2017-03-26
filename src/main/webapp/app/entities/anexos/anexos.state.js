@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('peticion', {
+        .state('anexos', {
             parent: 'entity',
-            url: '/peticion?page&sort&search',
+            url: '/anexos?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Peticions'
+                pageTitle: 'Anexos'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/peticion/peticions.html',
-                    controller: 'PeticionController',
+                    templateUrl: 'app/entities/anexos/anexos.html',
+                    controller: 'AnexosController',
                     controllerAs: 'vm'
                 }
             },
@@ -43,30 +43,30 @@
                         ascending: PaginationUtil.parseAscending($stateParams.sort),
                         search: $stateParams.search
                     };
-                }],
+                }]
             }
         })
-        .state('peticion-detail', {
-            parent: 'peticion',
-            url: '/peticion/{id}',
+        .state('anexos-detail', {
+            parent: 'anexos',
+            url: '/anexos/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Peticion'
+                pageTitle: 'Anexos'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/peticion/peticion-detail.html',
-                    controller: 'PeticionDetailController',
+                    templateUrl: 'app/entities/anexos/anexos-detail.html',
+                    controller: 'AnexosDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Peticion', function($stateParams, Peticion) {
-                    return Peticion.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Anexos', function($stateParams, Anexos) {
+                    return Anexos.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'peticion',
+                        name: $state.current.name || 'anexos',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -74,22 +74,22 @@
                 }]
             }
         })
-        .state('peticion-detail.edit', {
-            parent: 'peticion-detail',
+        .state('anexos-detail.edit', {
+            parent: 'anexos-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-dialog.html',
-                    controller: 'PeticionDialogController',
+                    templateUrl: 'app/entities/anexos/anexos-dialog.html',
+                    controller: 'AnexosDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Peticion', function(Peticion) {
-                            return Peticion.get({id : $stateParams.id}).$promise;
+                        entity: ['Anexos', function(Anexos) {
+                            return Anexos.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -99,87 +99,81 @@
                 });
             }]
         })
-        .state('peticion.new', {
-            parent: 'peticion',
+        .state('anexos.new', {
+            parent: 'anexos',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-dialog.html',
-                    controller: 'PeticionDialogController',
+                    templateUrl: 'app/entities/anexos/anexos-dialog.html',
+                    controller: 'AnexosDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
+                                archivoanexo: null,
+                                archivoanexoContentType: null,
+                                descripcion: null,
                                 numero_peticion: null,
-                                nomsolicitante: null,
-                                paternosolicitante: null,
-                                maternosolicitante: null,
-                                cargosolicitante: null,
-                                direccionsolicitante: null,
-                                fechayhora: null,
-                                actocertificar: null,
-                                oficio: null,
-                                oficioContentType: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('peticion', null, { reload: 'peticion' });
+                    $state.go('anexos', null, { reload: 'anexos' });
                 }, function() {
-                    $state.go('peticion');
+                    $state.go('anexos');
                 });
             }]
         })
-        .state('peticion.edit', {
-            parent: 'peticion',
+        .state('anexos.edit', {
+            parent: 'anexos',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-dialog.html',
-                    controller: 'PeticionDialogController',
+                    templateUrl: 'app/entities/anexos/anexos-dialog.html',
+                    controller: 'AnexosDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Peticion', function(Peticion) {
-                            return Peticion.get({id : $stateParams.id}).$promise;
+                        entity: ['Anexos', function(Anexos) {
+                            return Anexos.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('peticion', null, { reload: 'peticion' });
+                    $state.go('anexos', null, { reload: 'anexos' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('peticion.delete', {
-            parent: 'peticion',
+        .state('anexos.delete', {
+            parent: 'anexos',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/peticion/peticion-delete-dialog.html',
-                    controller: 'PeticionDeleteController',
+                    templateUrl: 'app/entities/anexos/anexos-delete-dialog.html',
+                    controller: 'AnexosDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Peticion', function(Peticion) {
-                            return Peticion.get({id : $stateParams.id}).$promise;
+                        entity: ['Anexos', function(Anexos) {
+                            return Anexos.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('peticion', null, { reload: 'peticion' });
+                    $state.go('anexos', null, { reload: 'anexos' });
                 }, function() {
                     $state.go('^');
                 });

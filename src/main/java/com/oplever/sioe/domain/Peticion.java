@@ -57,12 +57,6 @@ public class Peticion implements Serializable {
     @Field("oficio_content_type")
     private String oficioContentType;
 
-    @Field("oficio_2")
-    private byte[] oficio2;
-
-    @Field("oficio_2_content_type")
-    private String oficio2ContentType;
-
     public String getId() {
         return id;
     }
@@ -201,32 +195,6 @@ public class Peticion implements Serializable {
         this.oficioContentType = oficioContentType;
     }
 
-    public byte[] getOficio2() {
-        return oficio2;
-    }
-
-    public Peticion oficio2(byte[] oficio2) {
-        this.oficio2 = oficio2;
-        return this;
-    }
-
-    public void setOficio2(byte[] oficio2) {
-        this.oficio2 = oficio2;
-    }
-
-    public String getOficio2ContentType() {
-        return oficio2ContentType;
-    }
-
-    public Peticion oficio2ContentType(String oficio2ContentType) {
-        this.oficio2ContentType = oficio2ContentType;
-        return this;
-    }
-
-    public void setOficio2ContentType(String oficio2ContentType) {
-        this.oficio2ContentType = oficio2ContentType;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -261,8 +229,6 @@ public class Peticion implements Serializable {
             ", actocertificar='" + actocertificar + "'" +
             ", oficio='" + oficio + "'" +
             ", oficioContentType='" + oficioContentType + "'" +
-            ", oficio2='" + oficio2 + "'" +
-            ", oficio2ContentType='" + oficio2ContentType + "'" +
             '}';
     }
 }

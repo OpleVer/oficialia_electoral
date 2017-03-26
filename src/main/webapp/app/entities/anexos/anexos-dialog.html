@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myAnexosLabel">Create or edit a Anexos</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.anexos.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.anexos.id" readonly />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setArchivoanexo($file, vm.anexos)">
+            <label class="control-label" for="field_archivoanexo">Archivoanexo</label>
+            <div>
+                <div ng-if="vm.anexos.archivoanexo" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.anexos.archivoanexoContentType, vm.anexos.archivoanexo)">open</a><br>
+                    <span class="pull-left">{{vm.anexos.archivoanexoContentType}}, {{vm.byteSize(vm.anexos.archivoanexo)}}</span>
+                    <button type="button" ng-click="vm.anexos.archivoanexo=null;vm.anexos.archivoanexoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setArchivoanexo($file, vm.anexos)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="archivoanexo" id="field_archivoanexo"
+                    ng-model="vm.anexos.archivoanexo"
+                    />
+            <input type="hidden" class="form-control" name="archivoanexoContentType" id="field_archivoanexoContentType"
+                    ng-model="vm.anexos.archivoanexoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_descripcion">Descripcion</label>
+            <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="vm.anexos.descripcion"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.anexos.numero_peticion" for="field_numero_peticion">Numero Peticion</label>
+            <input type="text" class="form-control" name="numero_peticion" id="field_numero_peticion"
+                    ng-model="vm.anexos.numero_peticion"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

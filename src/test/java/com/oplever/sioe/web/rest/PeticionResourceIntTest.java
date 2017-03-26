@@ -71,11 +71,6 @@ public class PeticionResourceIntTest {
     private static final String DEFAULT_OFICIO_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_OFICIO_CONTENT_TYPE = "image/png";
 
-    private static final byte[] DEFAULT_OFICIO_2 = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_OFICIO_2 = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_OFICIO_2_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_OFICIO_2_CONTENT_TYPE = "image/png";
-
     @Autowired
     private PeticionRepository peticionRepository;
 
@@ -122,9 +117,7 @@ public class PeticionResourceIntTest {
             .fechayhora(DEFAULT_FECHAYHORA)
             .actocertificar(DEFAULT_ACTOCERTIFICAR)
             .oficio(DEFAULT_OFICIO)
-            .oficioContentType(DEFAULT_OFICIO_CONTENT_TYPE)
-            .oficio2(DEFAULT_OFICIO_2)
-            .oficio2ContentType(DEFAULT_OFICIO_2_CONTENT_TYPE);
+            .oficioContentType(DEFAULT_OFICIO_CONTENT_TYPE);
         return peticion;
     }
 
@@ -158,8 +151,6 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getActocertificar()).isEqualTo(DEFAULT_ACTOCERTIFICAR);
         assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
         assertThat(testPeticion.getOficioContentType()).isEqualTo(DEFAULT_OFICIO_CONTENT_TYPE);
-        assertThat(testPeticion.getOficio2()).isEqualTo(DEFAULT_OFICIO_2);
-        assertThat(testPeticion.getOficio2ContentType()).isEqualTo(DEFAULT_OFICIO_2_CONTENT_TYPE);
     }
 
     @Test
@@ -301,9 +292,7 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].fechayhora").value(hasItem(sameInstant(DEFAULT_FECHAYHORA))))
             .andExpect(jsonPath("$.[*].actocertificar").value(hasItem(DEFAULT_ACTOCERTIFICAR.toString())))
             .andExpect(jsonPath("$.[*].oficioContentType").value(hasItem(DEFAULT_OFICIO_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].oficio").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO))))
-            .andExpect(jsonPath("$.[*].oficio2ContentType").value(hasItem(DEFAULT_OFICIO_2_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].oficio2").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO_2))));
+            .andExpect(jsonPath("$.[*].oficio").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO))));
     }
 
     @Test
@@ -325,9 +314,7 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.fechayhora").value(sameInstant(DEFAULT_FECHAYHORA)))
             .andExpect(jsonPath("$.actocertificar").value(DEFAULT_ACTOCERTIFICAR.toString()))
             .andExpect(jsonPath("$.oficioContentType").value(DEFAULT_OFICIO_CONTENT_TYPE))
-            .andExpect(jsonPath("$.oficio").value(Base64Utils.encodeToString(DEFAULT_OFICIO)))
-            .andExpect(jsonPath("$.oficio2ContentType").value(DEFAULT_OFICIO_2_CONTENT_TYPE))
-            .andExpect(jsonPath("$.oficio2").value(Base64Utils.encodeToString(DEFAULT_OFICIO_2)));
+            .andExpect(jsonPath("$.oficio").value(Base64Utils.encodeToString(DEFAULT_OFICIO)));
     }
 
     @Test
@@ -356,9 +343,7 @@ public class PeticionResourceIntTest {
             .fechayhora(UPDATED_FECHAYHORA)
             .actocertificar(UPDATED_ACTOCERTIFICAR)
             .oficio(UPDATED_OFICIO)
-            .oficioContentType(UPDATED_OFICIO_CONTENT_TYPE)
-            .oficio2(UPDATED_OFICIO_2)
-            .oficio2ContentType(UPDATED_OFICIO_2_CONTENT_TYPE);
+            .oficioContentType(UPDATED_OFICIO_CONTENT_TYPE);
 
         restPeticionMockMvc.perform(put("/api/peticions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -379,8 +364,6 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getActocertificar()).isEqualTo(UPDATED_ACTOCERTIFICAR);
         assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
         assertThat(testPeticion.getOficioContentType()).isEqualTo(UPDATED_OFICIO_CONTENT_TYPE);
-        assertThat(testPeticion.getOficio2()).isEqualTo(UPDATED_OFICIO_2);
-        assertThat(testPeticion.getOficio2ContentType()).isEqualTo(UPDATED_OFICIO_2_CONTENT_TYPE);
     }
 
     @Test

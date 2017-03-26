@@ -126,28 +126,7 @@
                     />
             <input type="hidden" class="form-control" name="oficioContentType" id="field_oficioContentType"
                     ng-model="vm.peticion.oficioContentType" />
-        </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setOficio2($file, vm.peticion)" ngf-pattern="'image/*'">
-            <label class="control-label" for="field_oficio2">Oficio 2</label>
-            <div>
-                <img data-ng-src="{{'data:' + vm.peticion.oficio2ContentType + ';base64,' + vm.peticion.oficio2}}" style="max-height: 100px;" ng-if="vm.peticion.oficio2" alt="peticion image"/>
-                <div ng-if="vm.peticion.oficio2" class="help-block clearfix">
-                    <span class="pull-left">{{vm.peticion.oficio2ContentType}}, {{vm.byteSize(vm.peticion.oficio2)}}</span>
-                    <button type="button" ng-click="vm.peticion.oficio2=null;vm.peticion.oficio2ContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setOficio2($file, vm.peticion)" accept="image/*">
-                    Add image
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="oficio2" id="field_oficio2"
-                    ng-model="vm.peticion.oficio2"
-                    />
-            <input type="hidden" class="form-control" name="oficio2ContentType" id="field_oficio2ContentType"
-                    ng-model="vm.peticion.oficio2ContentType" />
+
         </div>
 
     </div>
