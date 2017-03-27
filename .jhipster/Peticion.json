@@ -56,6 +56,10 @@
             "fieldName": "oficio",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "nom_reps_solicitud",
+            "fieldType": "String"
         }
     ],
     "dto": "no",

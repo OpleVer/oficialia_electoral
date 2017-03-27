@@ -71,6 +71,9 @@ public class PeticionResourceIntTest {
     private static final String DEFAULT_OFICIO_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_OFICIO_CONTENT_TYPE = "image/png";
 
+    private static final String DEFAULT_NOM_REPS_SOLICITUD = "AAAAAAAAAA";
+    private static final String UPDATED_NOM_REPS_SOLICITUD = "BBBBBBBBBB";
+
     @Autowired
     private PeticionRepository peticionRepository;
 
@@ -117,7 +120,8 @@ public class PeticionResourceIntTest {
             .fechayhora(DEFAULT_FECHAYHORA)
             .actocertificar(DEFAULT_ACTOCERTIFICAR)
             .oficio(DEFAULT_OFICIO)
-            .oficioContentType(DEFAULT_OFICIO_CONTENT_TYPE);
+            .oficioContentType(DEFAULT_OFICIO_CONTENT_TYPE)
+            .nom_reps_solicitud(DEFAULT_NOM_REPS_SOLICITUD);
         return peticion;
     }
 
@@ -151,6 +155,7 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getActocertificar()).isEqualTo(DEFAULT_ACTOCERTIFICAR);
         assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
         assertThat(testPeticion.getOficioContentType()).isEqualTo(DEFAULT_OFICIO_CONTENT_TYPE);
+        assertThat(testPeticion.getNom_reps_solicitud()).isEqualTo(DEFAULT_NOM_REPS_SOLICITUD);
     }
 
     @Test
@@ -292,7 +297,8 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].fechayhora").value(hasItem(sameInstant(DEFAULT_FECHAYHORA))))
             .andExpect(jsonPath("$.[*].actocertificar").value(hasItem(DEFAULT_ACTOCERTIFICAR.toString())))
             .andExpect(jsonPath("$.[*].oficioContentType").value(hasItem(DEFAULT_OFICIO_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].oficio").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO))));
+            .andExpect(jsonPath("$.[*].oficio").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO))))
+            .andExpect(jsonPath("$.[*].nom_reps_solicitud").value(hasItem(DEFAULT_NOM_REPS_SOLICITUD.toString())));
     }
 
     @Test
@@ -314,7 +320,8 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.fechayhora").value(sameInstant(DEFAULT_FECHAYHORA)))
             .andExpect(jsonPath("$.actocertificar").value(DEFAULT_ACTOCERTIFICAR.toString()))
             .andExpect(jsonPath("$.oficioContentType").value(DEFAULT_OFICIO_CONTENT_TYPE))
-            .andExpect(jsonPath("$.oficio").value(Base64Utils.encodeToString(DEFAULT_OFICIO)));
+            .andExpect(jsonPath("$.oficio").value(Base64Utils.encodeToString(DEFAULT_OFICIO)))
+            .andExpect(jsonPath("$.nom_reps_solicitud").value(DEFAULT_NOM_REPS_SOLICITUD.toString()));
     }
 
     @Test
@@ -343,7 +350,8 @@ public class PeticionResourceIntTest {
             .fechayhora(UPDATED_FECHAYHORA)
             .actocertificar(UPDATED_ACTOCERTIFICAR)
             .oficio(UPDATED_OFICIO)
-            .oficioContentType(UPDATED_OFICIO_CONTENT_TYPE);
+            .oficioContentType(UPDATED_OFICIO_CONTENT_TYPE)
+            .nom_reps_solicitud(UPDATED_NOM_REPS_SOLICITUD);
 
         restPeticionMockMvc.perform(put("/api/peticions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -364,6 +372,7 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getActocertificar()).isEqualTo(UPDATED_ACTOCERTIFICAR);
         assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
         assertThat(testPeticion.getOficioContentType()).isEqualTo(UPDATED_OFICIO_CONTENT_TYPE);
+        assertThat(testPeticion.getNom_reps_solicitud()).isEqualTo(UPDATED_NOM_REPS_SOLICITUD);
     }
 
     @Test

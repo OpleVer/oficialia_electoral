@@ -20,7 +20,8 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="zona"><span>Zona</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="disrito"><span>Disrito</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="distrito"><span>Distrito</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="municipio"><span>Municipio</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,7 +29,8 @@
                 <tr ng-repeat="origen in vm.origens track by origen.id">
                     <td><a ui-sref="origen-detail({id:origen.id})">{{origen.id}}</a></td>
                     <td>{{origen.zona}}</td>
-                    <td>{{origen.disrito}}</td>
+                    <td>{{origen.distrito}}</td>
+                    <td>{{origen.municipio}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

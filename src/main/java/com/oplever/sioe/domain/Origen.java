@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.oplever.sioe.domain.enumeration.Tododistrito;
-
 /**
  * A Origen.
  */
@@ -24,8 +22,11 @@ public class Origen implements Serializable {
     @Field("zona")
     private String zona;
 
-    @Field("disrito")
-    private Tododistrito disrito;
+    @Field("distrito")
+    private String distrito;
+
+    @Field("municipio")
+    private String municipio;
 
     public String getId() {
         return id;
@@ -48,17 +49,30 @@ public class Origen implements Serializable {
         this.zona = zona;
     }
 
-    public Tododistrito getDisrito() {
-        return disrito;
+    public String getDistrito() {
+        return distrito;
     }
 
-    public Origen disrito(Tododistrito disrito) {
-        this.disrito = disrito;
+    public Origen distrito(String distrito) {
+        this.distrito = distrito;
         return this;
     }
 
-    public void setDisrito(Tododistrito disrito) {
-        this.disrito = disrito;
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
+
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public Origen municipio(String municipio) {
+        this.municipio = municipio;
+        return this;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
     }
 
     @Override
@@ -86,7 +100,8 @@ public class Origen implements Serializable {
         return "Origen{" +
             "id=" + id +
             ", zona='" + zona + "'" +
-            ", disrito='" + disrito + "'" +
+            ", distrito='" + distrito + "'" +
+            ", municipio='" + municipio + "'" +
             '}';
     }
 }

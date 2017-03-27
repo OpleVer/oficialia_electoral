@@ -57,6 +57,9 @@ public class Peticion implements Serializable {
     @Field("oficio_content_type")
     private String oficioContentType;
 
+    @Field("nom_reps_solicitud")
+    private String nom_reps_solicitud;
+
     public String getId() {
         return id;
     }
@@ -195,6 +198,19 @@ public class Peticion implements Serializable {
         this.oficioContentType = oficioContentType;
     }
 
+    public String getNom_reps_solicitud() {
+        return nom_reps_solicitud;
+    }
+
+    public Peticion nom_reps_solicitud(String nom_reps_solicitud) {
+        this.nom_reps_solicitud = nom_reps_solicitud;
+        return this;
+    }
+
+    public void setNom_reps_solicitud(String nom_reps_solicitud) {
+        this.nom_reps_solicitud = nom_reps_solicitud;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -229,6 +245,7 @@ public class Peticion implements Serializable {
             ", actocertificar='" + actocertificar + "'" +
             ", oficio='" + oficio + "'" +
             ", oficioContentType='" + oficioContentType + "'" +
+            ", nom_reps_solicitud='" + nom_reps_solicitud + "'" +
             '}';
     }
 }

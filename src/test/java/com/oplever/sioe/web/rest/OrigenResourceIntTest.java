@@ -27,7 +27,6 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.oplever.sioe.domain.enumeration.Tododistrito;
 /**
  * Test class for the OrigenResource REST controller.
  *
@@ -40,8 +39,11 @@ public class OrigenResourceIntTest {
     private static final String DEFAULT_ZONA = "AAAAAAAAAA";
     private static final String UPDATED_ZONA = "BBBBBBBBBB";
 
-    private static final Tododistrito DEFAULT_DISRITO = Tododistrito.Panuco01;
-    private static final Tododistrito UPDATED_DISRITO = Tododistrito.Tantoyuca02;
+    private static final String DEFAULT_DISTRITO = "AAAAAAAAAA";
+    private static final String UPDATED_DISTRITO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_MUNICIPIO = "AAAAAAAAAA";
+    private static final String UPDATED_MUNICIPIO = "BBBBBBBBBB";
 
     @Autowired
     private OrigenRepository origenRepository;
@@ -81,7 +83,8 @@ public class OrigenResourceIntTest {
     public static Origen createEntity() {
         Origen origen = new Origen()
             .zona(DEFAULT_ZONA)
-            .disrito(DEFAULT_DISRITO);
+            .distrito(DEFAULT_DISTRITO)
+            .municipio(DEFAULT_MUNICIPIO);
         return origen;
     }
 
@@ -106,7 +109,8 @@ public class OrigenResourceIntTest {
         assertThat(origenList).hasSize(databaseSizeBeforeCreate + 1);
         Origen testOrigen = origenList.get(origenList.size() - 1);
         assertThat(testOrigen.getZona()).isEqualTo(DEFAULT_ZONA);
-        assertThat(testOrigen.getDisrito()).isEqualTo(DEFAULT_DISRITO);
+        assertThat(testOrigen.getDistrito()).isEqualTo(DEFAULT_DISTRITO);
+        assertThat(testOrigen.getMunicipio()).isEqualTo(DEFAULT_MUNICIPIO);
     }
 
     @Test
@@ -138,7 +142,8 @@ public class OrigenResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(origen.getId())))
             .andExpect(jsonPath("$.[*].zona").value(hasItem(DEFAULT_ZONA.toString())))
-            .andExpect(jsonPath("$.[*].disrito").value(hasItem(DEFAULT_DISRITO.toString())));
+            .andExpect(jsonPath("$.[*].distrito").value(hasItem(DEFAULT_DISTRITO.toString())))
+            .andExpect(jsonPath("$.[*].municipio").value(hasItem(DEFAULT_MUNICIPIO.toString())));
     }
 
     @Test
@@ -152,7 +157,8 @@ public class OrigenResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(origen.getId()))
             .andExpect(jsonPath("$.zona").value(DEFAULT_ZONA.toString()))
-            .andExpect(jsonPath("$.disrito").value(DEFAULT_DISRITO.toString()));
+            .andExpect(jsonPath("$.distrito").value(DEFAULT_DISTRITO.toString()))
+            .andExpect(jsonPath("$.municipio").value(DEFAULT_MUNICIPIO.toString()));
     }
 
     @Test
@@ -173,7 +179,8 @@ public class OrigenResourceIntTest {
         Origen updatedOrigen = origenRepository.findOne(origen.getId());
         updatedOrigen
             .zona(UPDATED_ZONA)
-            .disrito(UPDATED_DISRITO);
+            .distrito(UPDATED_DISTRITO)
+            .municipio(UPDATED_MUNICIPIO);
 
         restOrigenMockMvc.perform(put("/api/origens")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -185,7 +192,8 @@ public class OrigenResourceIntTest {
         assertThat(origenList).hasSize(databaseSizeBeforeUpdate);
         Origen testOrigen = origenList.get(origenList.size() - 1);
         assertThat(testOrigen.getZona()).isEqualTo(UPDATED_ZONA);
-        assertThat(testOrigen.getDisrito()).isEqualTo(UPDATED_DISRITO);
+        assertThat(testOrigen.getDistrito()).isEqualTo(UPDATED_DISTRITO);
+        assertThat(testOrigen.getMunicipio()).isEqualTo(UPDATED_MUNICIPIO);
     }
 
     @Test

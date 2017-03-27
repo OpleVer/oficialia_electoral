@@ -116,7 +116,8 @@
                         entity: function () {
                             return {
                                 zona: null,
-                                disrito: null,
+                                distrito: null,
+                                municipio: null,
                                 id: null
                             };
                         }

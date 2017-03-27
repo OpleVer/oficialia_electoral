@@ -125,6 +125,7 @@
                                 actocertificar: null,
                                 oficio: null,
                                 oficioContentType: null,
+                                nom_reps_solicitud: null,
                                 id: null
                             };
                         }

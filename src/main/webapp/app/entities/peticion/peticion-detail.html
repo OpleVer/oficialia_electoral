@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span>Expediente</span></h2>
+    <h2><span>Peticion</span> {{vm.peticion.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
@@ -8,9 +8,17 @@
         <dd>
             <span>{{vm.peticion.numero_peticion}}</span>
         </dd>
-        <dt><span>Nombre Solicitante</span></dt>
+        <dt><span>Nomsolicitante</span></dt>
         <dd>
-            <span>{{vm.peticion.nomsolicitante}} {{vm.peticion.paternosolicitante}} {{vm.peticion.maternosolicitante}}</span>
+            <span>{{vm.peticion.nomsolicitante}}</span>
+        </dd>
+        <dt><span>Paternosolicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.paternosolicitante}}</span>
+        </dd>
+        <dt><span>Maternosolicitante</span></dt>
+        <dd>
+            <span>{{vm.peticion.maternosolicitante}}</span>
         </dd>
         <dt><span>Cargosolicitante</span></dt>
         <dd>
@@ -31,9 +39,13 @@
         <dt><span>Oficio</span></dt>
         <dd>
             <div ng-if="vm.peticion.oficio">
-                <button type="submit" class=class="btn btn-success btn-sm" ng-click= "vm.openFile(vm.peticion.oficioContentType, vm.peticion.oficio)">
-                  <span class="glyphicon glyphicon-alert"></span>
+                <a ng-click="vm.openFile(vm.peticion.oficioContentType, vm.peticion.oficio)">open</a>
+                {{vm.peticion.oficioContentType}}, {{vm.byteSize(vm.peticion.oficio)}}
             </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.nom_reps_solicitud">Nom Reps Solicitud</span></dt>
+        <dd>
+            <span>{{vm.peticion.nom_reps_solicitud}}</span>
         </dd>
     </dl>
 
@@ -45,7 +57,6 @@
 
     <button type="button" ui-sref="peticion-detail.edit({id:vm.peticion.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down"> Evaluar</span>
+        <span class="hidden-sm-down"> Edit</span>
     </button>
-
 </div>

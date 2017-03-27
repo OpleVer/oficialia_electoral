@@ -37,6 +37,9 @@
                 </p>
             </div>
         </div>
+
+
+
         <div class="form-group">
             <label class="control-label" for="field_paternosolicitante">Paternosolicitante</label>
             <input type="text" class="form-control" name="paternosolicitante" id="field_paternosolicitante"
@@ -121,13 +124,22 @@
                     Add blob
                 </button>
             </div>
-            <input type="hidden" class="form-control" name="oficio" id="field_oficio"
-                    ng-model="vm.peticion.oficio"
-                    />
-            <input type="hidden" class="form-control" name="oficioContentType" id="field_oficioContentType"
-                    ng-model="vm.peticion.oficioContentType" />
-
+            <input type="hidden" class="form-control" name="oficio" id="field_oficio"ng-model="vm.peticion.oficio"/>
+            <input type="hidden" class="form-control" name="oficioContentType" id="field_oficioContentType"ng-model="vm.peticion.oficioContentType" />
         </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.nom_reps_solicitud" for="field_nom_reps_solicitud">Nom Reps Solicitud</label>
+            <input type="text" class="form-control" name="nom_reps_solicitud" id="field_nom_reps_solicitud"ng-model="vm.peticion.nom_reps_solicitud"/>
+        </div>
+
+
+        <button class="btn btn-primary" ui-sref="anexos.new" >
+            <span class="glyphicon glyphicon-plus"></span>
+            <span >
+                Create new Anexos
+            </span>
+        </button>
+
 
     </div>
     <div class="modal-footer">
