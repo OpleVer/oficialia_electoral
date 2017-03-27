@@ -3,13 +3,6 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "numero_peticion",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "nomsolicitante",
             "fieldType": "String",
             "fieldValidateRules": [
@@ -59,6 +52,44 @@
         },
         {
             "fieldName": "nom_reps_solicitud",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "id_numero_solicitud",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "id_origen",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "oficio_prevencion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "num_oficio_prevencion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notificacion_prevencion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "num_notificacion_prevencion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "respuesta_prevencion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "num_respuesta_prevencion",
             "fieldType": "String"
         }
     ],

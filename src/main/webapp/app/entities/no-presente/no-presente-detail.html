@@ -1,0 +1,45 @@
+
+<div>
+    <h2><span data-translate="oficialiaElectoralApp.no_presente.detail.title">No Presente</span> {{vm.no_presente.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="oficialiaElectoralApp.no_presente.id_numero_solicitud">Id Numero Solicitud</span></dt>
+        <dd>
+            <span>{{vm.no_presente.id_numero_solicitud}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.no_presente.acuerdo">Acuerdo</span></dt>
+        <dd>
+            <div ng-if="vm.no_presente.acuerdo">
+                <a ng-click="vm.openFile(vm.no_presente.acuerdoContentType, vm.no_presente.acuerdo)">open</a>
+                {{vm.no_presente.acuerdoContentType}}, {{vm.byteSize(vm.no_presente.acuerdo)}}
+            </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.no_presente.num_acuerdo">Num Acuerdo</span></dt>
+        <dd>
+            <span>{{vm.no_presente.num_acuerdo}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.no_presente.notificacion">Notificacion</span></dt>
+        <dd>
+            <div ng-if="vm.no_presente.notificacion">
+                <a ng-click="vm.openFile(vm.no_presente.notificacionContentType, vm.no_presente.notificacion)">open</a>
+                {{vm.no_presente.notificacionContentType}}, {{vm.byteSize(vm.no_presente.notificacion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.no_presente.num_notificacion">Num Notificacion</span></dt>
+        <dd>
+            <span>{{vm.no_presente.num_notificacion}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="no-presente-detail.edit({id:vm.no_presente.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -45,6 +45,9 @@ public class OrigenResourceIntTest {
     private static final String DEFAULT_MUNICIPIO = "AAAAAAAAAA";
     private static final String UPDATED_MUNICIPIO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ID_ORIGEN = "AAAAAAAAAA";
+    private static final String UPDATED_ID_ORIGEN = "BBBBBBBBBB";
+
     @Autowired
     private OrigenRepository origenRepository;
 
@@ -84,7 +87,8 @@ public class OrigenResourceIntTest {
         Origen origen = new Origen()
             .zona(DEFAULT_ZONA)
             .distrito(DEFAULT_DISTRITO)
-            .municipio(DEFAULT_MUNICIPIO);
+            .municipio(DEFAULT_MUNICIPIO)
+            .id_origen(DEFAULT_ID_ORIGEN);
         return origen;
     }
 
@@ -111,6 +115,7 @@ public class OrigenResourceIntTest {
         assertThat(testOrigen.getZona()).isEqualTo(DEFAULT_ZONA);
         assertThat(testOrigen.getDistrito()).isEqualTo(DEFAULT_DISTRITO);
         assertThat(testOrigen.getMunicipio()).isEqualTo(DEFAULT_MUNICIPIO);
+        assertThat(testOrigen.getId_origen()).isEqualTo(DEFAULT_ID_ORIGEN);
     }
 
     @Test
@@ -143,7 +148,8 @@ public class OrigenResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(origen.getId())))
             .andExpect(jsonPath("$.[*].zona").value(hasItem(DEFAULT_ZONA.toString())))
             .andExpect(jsonPath("$.[*].distrito").value(hasItem(DEFAULT_DISTRITO.toString())))
-            .andExpect(jsonPath("$.[*].municipio").value(hasItem(DEFAULT_MUNICIPIO.toString())));
+            .andExpect(jsonPath("$.[*].municipio").value(hasItem(DEFAULT_MUNICIPIO.toString())))
+            .andExpect(jsonPath("$.[*].id_origen").value(hasItem(DEFAULT_ID_ORIGEN.toString())));
     }
 
     @Test
@@ -158,7 +164,8 @@ public class OrigenResourceIntTest {
             .andExpect(jsonPath("$.id").value(origen.getId()))
             .andExpect(jsonPath("$.zona").value(DEFAULT_ZONA.toString()))
             .andExpect(jsonPath("$.distrito").value(DEFAULT_DISTRITO.toString()))
-            .andExpect(jsonPath("$.municipio").value(DEFAULT_MUNICIPIO.toString()));
+            .andExpect(jsonPath("$.municipio").value(DEFAULT_MUNICIPIO.toString()))
+            .andExpect(jsonPath("$.id_origen").value(DEFAULT_ID_ORIGEN.toString()));
     }
 
     @Test
@@ -180,7 +187,8 @@ public class OrigenResourceIntTest {
         updatedOrigen
             .zona(UPDATED_ZONA)
             .distrito(UPDATED_DISTRITO)
-            .municipio(UPDATED_MUNICIPIO);
+            .municipio(UPDATED_MUNICIPIO)
+            .id_origen(UPDATED_ID_ORIGEN);
 
         restOrigenMockMvc.perform(put("/api/origens")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -194,6 +202,7 @@ public class OrigenResourceIntTest {
         assertThat(testOrigen.getZona()).isEqualTo(UPDATED_ZONA);
         assertThat(testOrigen.getDistrito()).isEqualTo(UPDATED_DISTRITO);
         assertThat(testOrigen.getMunicipio()).isEqualTo(UPDATED_MUNICIPIO);
+        assertThat(testOrigen.getId_origen()).isEqualTo(UPDATED_ID_ORIGEN);
     }
 
     @Test

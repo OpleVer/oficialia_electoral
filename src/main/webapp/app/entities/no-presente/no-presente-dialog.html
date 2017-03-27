@@ -1,0 +1,88 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myNo_presenteLabel" data-translate="oficialiaElectoralApp.no_presente.home.createOrEditLabel">Create or edit a No Presente</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.no_presente.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.no_presente.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.no_presente.id_numero_solicitud" for="field_id_numero_solicitud">Id Numero Solicitud</label>
+            <input type="text" class="form-control" name="id_numero_solicitud" id="field_id_numero_solicitud"
+                    ng-model="vm.no_presente.id_numero_solicitud"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setAcuerdo($file, vm.no_presente)">
+            <label class="control-label" data-translate="oficialiaElectoralApp.no_presente.acuerdo" for="field_acuerdo">Acuerdo</label>
+            <div>
+                <div ng-if="vm.no_presente.acuerdo" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.no_presente.acuerdoContentType, vm.no_presente.acuerdo)">open</a><br>
+                    <span class="pull-left">{{vm.no_presente.acuerdoContentType}}, {{vm.byteSize(vm.no_presente.acuerdo)}}</span>
+                    <button type="button" ng-click="vm.no_presente.acuerdo=null;vm.no_presente.acuerdoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setAcuerdo($file, vm.no_presente)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="acuerdo" id="field_acuerdo"
+                    ng-model="vm.no_presente.acuerdo"
+                    />
+            <input type="hidden" class="form-control" name="acuerdoContentType" id="field_acuerdoContentType"
+                    ng-model="vm.no_presente.acuerdoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.no_presente.num_acuerdo" for="field_num_acuerdo">Num Acuerdo</label>
+            <input type="text" class="form-control" name="num_acuerdo" id="field_num_acuerdo"
+                    ng-model="vm.no_presente.num_acuerdo"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setNotificacion($file, vm.no_presente)">
+            <label class="control-label" data-translate="oficialiaElectoralApp.no_presente.notificacion" for="field_notificacion">Notificacion</label>
+            <div>
+                <div ng-if="vm.no_presente.notificacion" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.no_presente.notificacionContentType, vm.no_presente.notificacion)">open</a><br>
+                    <span class="pull-left">{{vm.no_presente.notificacionContentType}}, {{vm.byteSize(vm.no_presente.notificacion)}}</span>
+                    <button type="button" ng-click="vm.no_presente.notificacion=null;vm.no_presente.notificacionContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setNotificacion($file, vm.no_presente)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="notificacion" id="field_notificacion"
+                    ng-model="vm.no_presente.notificacion"
+                    />
+            <input type="hidden" class="form-control" name="notificacionContentType" id="field_notificacionContentType"
+                    ng-model="vm.no_presente.notificacionContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.no_presente.num_notificacion" for="field_num_notificacion">Num Notificacion</label>
+            <input type="text" class="form-control" name="num_notificacion" id="field_num_notificacion"
+                    ng-model="vm.no_presente.num_notificacion"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

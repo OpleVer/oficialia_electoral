@@ -4,10 +4,6 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="oficialiaElectoralApp.peticion.numero_peticion">Numero Peticion</span></dt>
-        <dd>
-            <span>{{vm.peticion.numero_peticion}}</span>
-        </dd>
         <dt><span>Nomsolicitante</span></dt>
         <dd>
             <span>{{vm.peticion.nomsolicitante}}</span>
@@ -46,6 +42,47 @@
         <dt><span data-translate="oficialiaElectoralApp.peticion.nom_reps_solicitud">Nom Reps Solicitud</span></dt>
         <dd>
             <span>{{vm.peticion.nom_reps_solicitud}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.id_numero_solicitud">Id Numero Solicitud</span></dt>
+        <dd>
+            <span>{{vm.peticion.id_numero_solicitud}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.id_origen">Id Origen</span></dt>
+        <dd>
+            <span>{{vm.peticion.id_origen}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.oficio_prevencion">Oficio Prevencion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.oficio_prevencion">
+                <a ng-click="vm.openFile(vm.peticion.oficio_prevencionContentType, vm.peticion.oficio_prevencion)">open</a>
+                {{vm.peticion.oficio_prevencionContentType}}, {{vm.byteSize(vm.peticion.oficio_prevencion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.num_oficio_prevencion">Num Oficio Prevencion</span></dt>
+        <dd>
+            <span>{{vm.peticion.num_oficio_prevencion}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.notificacion_prevencion">Notificacion Prevencion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.notificacion_prevencion">
+                <a ng-click="vm.openFile(vm.peticion.notificacion_prevencionContentType, vm.peticion.notificacion_prevencion)">open</a>
+                {{vm.peticion.notificacion_prevencionContentType}}, {{vm.byteSize(vm.peticion.notificacion_prevencion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.num_notificacion_prevencion">Num Notificacion Prevencion</span></dt>
+        <dd>
+            <span>{{vm.peticion.num_notificacion_prevencion}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.respuesta_prevencion">Respuesta Prevencion</span></dt>
+        <dd>
+            <div ng-if="vm.peticion.respuesta_prevencion">
+                <a ng-click="vm.openFile(vm.peticion.respuesta_prevencionContentType, vm.peticion.respuesta_prevencion)">open</a>
+                {{vm.peticion.respuesta_prevencionContentType}}, {{vm.byteSize(vm.peticion.respuesta_prevencion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.peticion.num_respuesta_prevencion">Num Respuesta Prevencion</span></dt>
+        <dd>
+            <span>{{vm.peticion.num_respuesta_prevencion}}</span>
         </dd>
     </dl>
 

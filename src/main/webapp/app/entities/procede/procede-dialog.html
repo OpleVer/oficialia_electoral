@@ -1,0 +1,122 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProcedeLabel">Create or edit a Procede</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.procede.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.procede.id" readonly />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setActa($file, vm.procede)">
+            <label class="control-label" for="field_acta">Acta</label>
+            <div>
+                <div ng-if="vm.procede.acta" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.procede.actaContentType, vm.procede.acta)">open</a><br>
+                    <span class="pull-left">{{vm.procede.actaContentType}}, {{vm.byteSize(vm.procede.acta)}}</span>
+                    <button type="button" ng-click="vm.procede.acta=null;vm.procede.actaContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setActa($file, vm.procede)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="acta" id="field_acta"
+                    ng-model="vm.procede.acta"
+                    />
+            <input type="hidden" class="form-control" name="actaContentType" id="field_actaContentType"
+                    ng-model="vm.procede.actaContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setAcuerdo($file, vm.procede)">
+            <label class="control-label" for="field_acuerdo">Acuerdo</label>
+            <div>
+                <div ng-if="vm.procede.acuerdo" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.procede.acuerdoContentType, vm.procede.acuerdo)">open</a><br>
+                    <span class="pull-left">{{vm.procede.acuerdoContentType}}, {{vm.byteSize(vm.procede.acuerdo)}}</span>
+                    <button type="button" ng-click="vm.procede.acuerdo=null;vm.procede.acuerdoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setAcuerdo($file, vm.procede)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="acuerdo" id="field_acuerdo"
+                    ng-model="vm.procede.acuerdo"
+                    />
+            <input type="hidden" class="form-control" name="acuerdoContentType" id="field_acuerdoContentType"
+                    ng-model="vm.procede.acuerdoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.procede.id_procede" for="field_id_procede">Id Procede</label>
+            <input type="text" class="form-control" name="id_procede" id="field_id_procede"
+                    ng-model="vm.procede.id_procede"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setNotificacion($file, vm.procede)">
+            <label class="control-label" for="field_notificacion">Notificacion</label>
+            <div>
+                <div ng-if="vm.procede.notificacion" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.procede.notificacionContentType, vm.procede.notificacion)">open</a><br>
+                    <span class="pull-left">{{vm.procede.notificacionContentType}}, {{vm.byteSize(vm.procede.notificacion)}}</span>
+                    <button type="button" ng-click="vm.procede.notificacion=null;vm.procede.notificacionContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setNotificacion($file, vm.procede)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="notificacion" id="field_notificacion"
+                    ng-model="vm.procede.notificacion"
+                    />
+            <input type="hidden" class="form-control" name="notificacionContentType" id="field_notificacionContentType"
+                    ng-model="vm.procede.notificacionContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.procede.id_numero_solicitud" for="field_id_numero_solicitud">Id Numero Solicitud</label>
+            <input type="text" class="form-control" name="id_numero_solicitud" id="field_id_numero_solicitud"
+                    ng-model="vm.procede.id_numero_solicitud"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.procede.num_acta" for="field_num_acta">Num Acta</label>
+            <input type="text" class="form-control" name="num_acta" id="field_num_acta"
+                    ng-model="vm.procede.num_acta"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.procede.num_acuerdo" for="field_num_acuerdo">Num Acuerdo</label>
+            <input type="text" class="form-control" name="num_acuerdo" id="field_num_acuerdo"
+                    ng-model="vm.procede.num_acuerdo"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.procede.num_notificacion" for="field_num_notificacion">Num Notificacion</label>
+            <input type="text" class="form-control" name="num_notificacion" id="field_num_notificacion"
+                    ng-model="vm.procede.num_notificacion"
+                    />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

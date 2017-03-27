@@ -19,17 +19,17 @@ public class Anexos implements Serializable {
     @Id
     private String id;
 
-    @Field("archivoanexo")
-    private byte[] archivoanexo;
-
-    @Field("archivoanexo_content_type")
-    private String archivoanexoContentType;
-
     @Field("descripcion")
     private String descripcion;
 
-    @Field("numero_peticion")
-    private String numero_peticion;
+    @Field("archivo")
+    private String archivo;
+
+    @Field("id_numero_solicitud")
+    private String id_numero_solicitud;
+
+    @Field("id_procede")
+    private String id_procede;
 
     public String getId() {
         return id;
@@ -37,32 +37,6 @@ public class Anexos implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public byte[] getArchivoanexo() {
-        return archivoanexo;
-    }
-
-    public Anexos archivoanexo(byte[] archivoanexo) {
-        this.archivoanexo = archivoanexo;
-        return this;
-    }
-
-    public void setArchivoanexo(byte[] archivoanexo) {
-        this.archivoanexo = archivoanexo;
-    }
-
-    public String getArchivoanexoContentType() {
-        return archivoanexoContentType;
-    }
-
-    public Anexos archivoanexoContentType(String archivoanexoContentType) {
-        this.archivoanexoContentType = archivoanexoContentType;
-        return this;
-    }
-
-    public void setArchivoanexoContentType(String archivoanexoContentType) {
-        this.archivoanexoContentType = archivoanexoContentType;
     }
 
     public String getDescripcion() {
@@ -78,17 +52,43 @@ public class Anexos implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getNumero_peticion() {
-        return numero_peticion;
+    public String getArchivo() {
+        return archivo;
     }
 
-    public Anexos numero_peticion(String numero_peticion) {
-        this.numero_peticion = numero_peticion;
+    public Anexos archivo(String archivo) {
+        this.archivo = archivo;
         return this;
     }
 
-    public void setNumero_peticion(String numero_peticion) {
-        this.numero_peticion = numero_peticion;
+    public void setArchivo(String archivo) {
+        this.archivo = archivo;
+    }
+
+    public String getId_numero_solicitud() {
+        return id_numero_solicitud;
+    }
+
+    public Anexos id_numero_solicitud(String id_numero_solicitud) {
+        this.id_numero_solicitud = id_numero_solicitud;
+        return this;
+    }
+
+    public void setId_numero_solicitud(String id_numero_solicitud) {
+        this.id_numero_solicitud = id_numero_solicitud;
+    }
+
+    public String getId_procede() {
+        return id_procede;
+    }
+
+    public Anexos id_procede(String id_procede) {
+        this.id_procede = id_procede;
+        return this;
+    }
+
+    public void setId_procede(String id_procede) {
+        this.id_procede = id_procede;
     }
 
     @Override
@@ -115,10 +115,10 @@ public class Anexos implements Serializable {
     public String toString() {
         return "Anexos{" +
             "id=" + id +
-            ", archivoanexo='" + archivoanexo + "'" +
-            ", archivoanexoContentType='" + archivoanexoContentType + "'" +
             ", descripcion='" + descripcion + "'" +
-            ", numero_peticion='" + numero_peticion + "'" +
+            ", archivo='" + archivo + "'" +
+            ", id_numero_solicitud='" + id_numero_solicitud + "'" +
+            ", id_procede='" + id_procede + "'" +
             '}';
     }
 }

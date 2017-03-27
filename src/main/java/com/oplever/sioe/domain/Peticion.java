@@ -22,10 +22,6 @@ public class Peticion implements Serializable {
     private String id;
 
     @NotNull
-    @Field("numero_peticion")
-    private String numero_peticion;
-
-    @NotNull
     @Field("nomsolicitante")
     private String nomsolicitante;
 
@@ -60,25 +56,46 @@ public class Peticion implements Serializable {
     @Field("nom_reps_solicitud")
     private String nom_reps_solicitud;
 
+    @NotNull
+    @Field("id_numero_solicitud")
+    private String id_numero_solicitud;
+
+    @Field("id_origen")
+    private String id_origen;
+
+    @Field("oficio_prevencion")
+    private byte[] oficio_prevencion;
+
+    @Field("oficio_prevencion_content_type")
+    private String oficio_prevencionContentType;
+
+    @Field("num_oficio_prevencion")
+    private String num_oficio_prevencion;
+
+    @Field("notificacion_prevencion")
+    private byte[] notificacion_prevencion;
+
+    @Field("notificacion_prevencion_content_type")
+    private String notificacion_prevencionContentType;
+
+    @Field("num_notificacion_prevencion")
+    private String num_notificacion_prevencion;
+
+    @Field("respuesta_prevencion")
+    private byte[] respuesta_prevencion;
+
+    @Field("respuesta_prevencion_content_type")
+    private String respuesta_prevencionContentType;
+
+    @Field("num_respuesta_prevencion")
+    private String num_respuesta_prevencion;
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getNumero_peticion() {
-        return numero_peticion;
-    }
-
-    public Peticion numero_peticion(String numero_peticion) {
-        this.numero_peticion = numero_peticion;
-        return this;
-    }
-
-    public void setNumero_peticion(String numero_peticion) {
-        this.numero_peticion = numero_peticion;
     }
 
     public String getNomsolicitante() {
@@ -211,6 +228,149 @@ public class Peticion implements Serializable {
         this.nom_reps_solicitud = nom_reps_solicitud;
     }
 
+    public String getId_numero_solicitud() {
+        return id_numero_solicitud;
+    }
+
+    public Peticion id_numero_solicitud(String id_numero_solicitud) {
+        this.id_numero_solicitud = id_numero_solicitud;
+        return this;
+    }
+
+    public void setId_numero_solicitud(String id_numero_solicitud) {
+        this.id_numero_solicitud = id_numero_solicitud;
+    }
+
+    public String getId_origen() {
+        return id_origen;
+    }
+
+    public Peticion id_origen(String id_origen) {
+        this.id_origen = id_origen;
+        return this;
+    }
+
+    public void setId_origen(String id_origen) {
+        this.id_origen = id_origen;
+    }
+
+    public byte[] getOficio_prevencion() {
+        return oficio_prevencion;
+    }
+
+    public Peticion oficio_prevencion(byte[] oficio_prevencion) {
+        this.oficio_prevencion = oficio_prevencion;
+        return this;
+    }
+
+    public void setOficio_prevencion(byte[] oficio_prevencion) {
+        this.oficio_prevencion = oficio_prevencion;
+    }
+
+    public String getOficio_prevencionContentType() {
+        return oficio_prevencionContentType;
+    }
+
+    public Peticion oficio_prevencionContentType(String oficio_prevencionContentType) {
+        this.oficio_prevencionContentType = oficio_prevencionContentType;
+        return this;
+    }
+
+    public void setOficio_prevencionContentType(String oficio_prevencionContentType) {
+        this.oficio_prevencionContentType = oficio_prevencionContentType;
+    }
+
+    public String getNum_oficio_prevencion() {
+        return num_oficio_prevencion;
+    }
+
+    public Peticion num_oficio_prevencion(String num_oficio_prevencion) {
+        this.num_oficio_prevencion = num_oficio_prevencion;
+        return this;
+    }
+
+    public void setNum_oficio_prevencion(String num_oficio_prevencion) {
+        this.num_oficio_prevencion = num_oficio_prevencion;
+    }
+
+    public byte[] getNotificacion_prevencion() {
+        return notificacion_prevencion;
+    }
+
+    public Peticion notificacion_prevencion(byte[] notificacion_prevencion) {
+        this.notificacion_prevencion = notificacion_prevencion;
+        return this;
+    }
+
+    public void setNotificacion_prevencion(byte[] notificacion_prevencion) {
+        this.notificacion_prevencion = notificacion_prevencion;
+    }
+
+    public String getNotificacion_prevencionContentType() {
+        return notificacion_prevencionContentType;
+    }
+
+    public Peticion notificacion_prevencionContentType(String notificacion_prevencionContentType) {
+        this.notificacion_prevencionContentType = notificacion_prevencionContentType;
+        return this;
+    }
+
+    public void setNotificacion_prevencionContentType(String notificacion_prevencionContentType) {
+        this.notificacion_prevencionContentType = notificacion_prevencionContentType;
+    }
+
+    public String getNum_notificacion_prevencion() {
+        return num_notificacion_prevencion;
+    }
+
+    public Peticion num_notificacion_prevencion(String num_notificacion_prevencion) {
+        this.num_notificacion_prevencion = num_notificacion_prevencion;
+        return this;
+    }
+
+    public void setNum_notificacion_prevencion(String num_notificacion_prevencion) {
+        this.num_notificacion_prevencion = num_notificacion_prevencion;
+    }
+
+    public byte[] getRespuesta_prevencion() {
+        return respuesta_prevencion;
+    }
+
+    public Peticion respuesta_prevencion(byte[] respuesta_prevencion) {
+        this.respuesta_prevencion = respuesta_prevencion;
+        return this;
+    }
+
+    public void setRespuesta_prevencion(byte[] respuesta_prevencion) {
+        this.respuesta_prevencion = respuesta_prevencion;
+    }
+
+    public String getRespuesta_prevencionContentType() {
+        return respuesta_prevencionContentType;
+    }
+
+    public Peticion respuesta_prevencionContentType(String respuesta_prevencionContentType) {
+        this.respuesta_prevencionContentType = respuesta_prevencionContentType;
+        return this;
+    }
+
+    public void setRespuesta_prevencionContentType(String respuesta_prevencionContentType) {
+        this.respuesta_prevencionContentType = respuesta_prevencionContentType;
+    }
+
+    public String getNum_respuesta_prevencion() {
+        return num_respuesta_prevencion;
+    }
+
+    public Peticion num_respuesta_prevencion(String num_respuesta_prevencion) {
+        this.num_respuesta_prevencion = num_respuesta_prevencion;
+        return this;
+    }
+
+    public void setNum_respuesta_prevencion(String num_respuesta_prevencion) {
+        this.num_respuesta_prevencion = num_respuesta_prevencion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -235,7 +395,6 @@ public class Peticion implements Serializable {
     public String toString() {
         return "Peticion{" +
             "id=" + id +
-            ", numero_peticion='" + numero_peticion + "'" +
             ", nomsolicitante='" + nomsolicitante + "'" +
             ", paternosolicitante='" + paternosolicitante + "'" +
             ", maternosolicitante='" + maternosolicitante + "'" +
@@ -246,6 +405,17 @@ public class Peticion implements Serializable {
             ", oficio='" + oficio + "'" +
             ", oficioContentType='" + oficioContentType + "'" +
             ", nom_reps_solicitud='" + nom_reps_solicitud + "'" +
+            ", id_numero_solicitud='" + id_numero_solicitud + "'" +
+            ", id_origen='" + id_origen + "'" +
+            ", oficio_prevencion='" + oficio_prevencion + "'" +
+            ", oficio_prevencionContentType='" + oficio_prevencionContentType + "'" +
+            ", num_oficio_prevencion='" + num_oficio_prevencion + "'" +
+            ", notificacion_prevencion='" + notificacion_prevencion + "'" +
+            ", notificacion_prevencionContentType='" + notificacion_prevencionContentType + "'" +
+            ", num_notificacion_prevencion='" + num_notificacion_prevencion + "'" +
+            ", respuesta_prevencion='" + respuesta_prevencion + "'" +
+            ", respuesta_prevencionContentType='" + respuesta_prevencionContentType + "'" +
+            ", num_respuesta_prevencion='" + num_respuesta_prevencion + "'" +
             '}';
     }
 }

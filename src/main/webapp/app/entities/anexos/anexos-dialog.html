@@ -13,28 +13,6 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.anexos.id" readonly />
         </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setArchivoanexo($file, vm.anexos)">
-            <label class="control-label" for="field_archivoanexo">Archivoanexo</label>
-            <div>
-                <div ng-if="vm.anexos.archivoanexo" class="help-block clearfix">
-                    <a class="pull-left" ng-click="vm.openFile(vm.anexos.archivoanexoContentType, vm.anexos.archivoanexo)">open</a><br>
-                    <span class="pull-left">{{vm.anexos.archivoanexoContentType}}, {{vm.byteSize(vm.anexos.archivoanexo)}}</span>
-                    <button type="button" ng-click="vm.anexos.archivoanexo=null;vm.anexos.archivoanexoContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setArchivoanexo($file, vm.anexos)">
-                    Add blob
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="archivoanexo" id="field_archivoanexo"
-                    ng-model="vm.anexos.archivoanexo"
-                    />
-            <input type="hidden" class="form-control" name="archivoanexoContentType" id="field_archivoanexoContentType"
-                    ng-model="vm.anexos.archivoanexoContentType" />
-        </div>
         <div class="form-group">
             <label class="control-label" for="field_descripcion">Descripcion</label>
             <input type="text" class="form-control" name="descripcion" id="field_descripcion"
@@ -42,9 +20,21 @@
                     />
         </div>
         <div class="form-group">
-          
-            <input type="text" class="form-control" name="numero_peticion" id="field_numero_peticion"
-                    ng-model="vm.anexos.numero_peticion"
+            <label class="control-label" for="field_archivo">Archivo</label>
+            <input type="text" class="form-control" name="archivo" id="field_archivo"
+                    ng-model="vm.anexos.archivo"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.anexos.id_numero_solicitud" for="field_id_numero_solicitud">Id Numero Solicitud</label>
+            <input type="text" class="form-control" name="id_numero_solicitud" id="field_id_numero_solicitud"
+                    ng-model="vm.anexos.id_numero_solicitud"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.anexos.id_procede" for="field_id_procede">Id Procede</label>
+            <input type="text" class="form-control" name="id_procede" id="field_id_procede"
+                    ng-model="vm.anexos.id_procede"
                     />
         </div>
 

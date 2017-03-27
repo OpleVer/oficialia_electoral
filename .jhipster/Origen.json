@@ -13,6 +13,10 @@
         {
             "fieldName": "municipio",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "id_origen",
+            "fieldType": "String"
         }
     ],
     "dto": "no",

@@ -1,0 +1,74 @@
+<div>
+    <h2 data-translate="oficialiaElectoralApp.no_presente.home.title">No Presentes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="no-presente.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="oficialiaElectoralApp.no_presente.home.createLabel">
+                        Create new No Presente
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_numero_solicitud"><span data-translate="oficialiaElectoralApp.no_presente.id_numero_solicitud">Id Numero Solicitud</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="acuerdo"><span data-translate="oficialiaElectoralApp.no_presente.acuerdo">Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="num_acuerdo"><span data-translate="oficialiaElectoralApp.no_presente.num_acuerdo">Num Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notificacion"><span data-translate="oficialiaElectoralApp.no_presente.notificacion">Notificacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="num_notificacion"><span data-translate="oficialiaElectoralApp.no_presente.num_notificacion">Num Notificacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="no_presente in vm.no_presentes track by no_presente.id">
+                    <td><a ui-sref="no-presente-detail({id:no_presente.id})">{{no_presente.id}}</a></td>
+                    <td>{{no_presente.id_numero_solicitud}}</td>
+                    <td>
+                        <a ng-if="no_presente.acuerdo" ng-click="vm.openFile(no_presente.acuerdoContentType, no_presente.acuerdo)">open</a>
+                        <span ng-if="no_presente.acuerdo">{{no_presente.acuerdoContentType}}, {{vm.byteSize(no_presente.acuerdo)}}</span>
+                    </td>
+                    <td>{{no_presente.num_acuerdo}}</td>
+                    <td>
+                        <a ng-if="no_presente.notificacion" ng-click="vm.openFile(no_presente.notificacionContentType, no_presente.notificacion)">open</a>
+                        <span ng-if="no_presente.notificacion">{{no_presente.notificacionContentType}}, {{vm.byteSize(no_presente.notificacion)}}</span>
+                    </td>
+                    <td>{{no_presente.num_notificacion}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="no-presente-detail({id:no_presente.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="no-presente.edit({id:no_presente.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="no-presente.delete({id:no_presente.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

@@ -3,17 +3,19 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "archivoanexo",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any",
-            "fieldValidateRules": []
-        },
-        {
             "fieldName": "descripcion",
             "fieldType": "String"
         },
         {
-            "fieldName": "numero_peticion",
+            "fieldName": "archivo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "id_numero_solicitud",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "id_procede",
             "fieldType": "String"
         }
     ],

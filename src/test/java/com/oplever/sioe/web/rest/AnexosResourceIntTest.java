@@ -19,7 +19,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.Base64Utils;
 
 import java.util.List;
 
@@ -37,16 +36,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = OficialiaElectoralApp.class)
 public class AnexosResourceIntTest {
 
-    private static final byte[] DEFAULT_ARCHIVOANEXO = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ARCHIVOANEXO = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ARCHIVOANEXO_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ARCHIVOANEXO_CONTENT_TYPE = "image/png";
-
     private static final String DEFAULT_DESCRIPCION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPCION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NUMERO_PETICION = "AAAAAAAAAA";
-    private static final String UPDATED_NUMERO_PETICION = "BBBBBBBBBB";
+    private static final String DEFAULT_ARCHIVO = "AAAAAAAAAA";
+    private static final String UPDATED_ARCHIVO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ID_NUMERO_SOLICITUD = "AAAAAAAAAA";
+    private static final String UPDATED_ID_NUMERO_SOLICITUD = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ID_PROCEDE = "AAAAAAAAAA";
+    private static final String UPDATED_ID_PROCEDE = "BBBBBBBBBB";
 
     @Autowired
     private AnexosRepository anexosRepository;
@@ -85,10 +85,10 @@ public class AnexosResourceIntTest {
      */
     public static Anexos createEntity() {
         Anexos anexos = new Anexos()
-            .archivoanexo(DEFAULT_ARCHIVOANEXO)
-            .archivoanexoContentType(DEFAULT_ARCHIVOANEXO_CONTENT_TYPE)
             .descripcion(DEFAULT_DESCRIPCION)
-            .numero_peticion(DEFAULT_NUMERO_PETICION);
+            .archivo(DEFAULT_ARCHIVO)
+            .id_numero_solicitud(DEFAULT_ID_NUMERO_SOLICITUD)
+            .id_procede(DEFAULT_ID_PROCEDE);
         return anexos;
     }
 
@@ -112,10 +112,10 @@ public class AnexosResourceIntTest {
         List<Anexos> anexosList = anexosRepository.findAll();
         assertThat(anexosList).hasSize(databaseSizeBeforeCreate + 1);
         Anexos testAnexos = anexosList.get(anexosList.size() - 1);
-        assertThat(testAnexos.getArchivoanexo()).isEqualTo(DEFAULT_ARCHIVOANEXO);
-        assertThat(testAnexos.getArchivoanexoContentType()).isEqualTo(DEFAULT_ARCHIVOANEXO_CONTENT_TYPE);
         assertThat(testAnexos.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
-        assertThat(testAnexos.getNumero_peticion()).isEqualTo(DEFAULT_NUMERO_PETICION);
+        assertThat(testAnexos.getArchivo()).isEqualTo(DEFAULT_ARCHIVO);
+        assertThat(testAnexos.getId_numero_solicitud()).isEqualTo(DEFAULT_ID_NUMERO_SOLICITUD);
+        assertThat(testAnexos.getId_procede()).isEqualTo(DEFAULT_ID_PROCEDE);
     }
 
     @Test
@@ -146,10 +146,10 @@ public class AnexosResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(anexos.getId())))
-            .andExpect(jsonPath("$.[*].archivoanexoContentType").value(hasItem(DEFAULT_ARCHIVOANEXO_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].archivoanexo").value(hasItem(Base64Utils.encodeToString(DEFAULT_ARCHIVOANEXO))))
             .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
-            .andExpect(jsonPath("$.[*].numero_peticion").value(hasItem(DEFAULT_NUMERO_PETICION.toString())));
+            .andExpect(jsonPath("$.[*].archivo").value(hasItem(DEFAULT_ARCHIVO.toString())))
+            .andExpect(jsonPath("$.[*].id_numero_solicitud").value(hasItem(DEFAULT_ID_NUMERO_SOLICITUD.toString())))
+            .andExpect(jsonPath("$.[*].id_procede").value(hasItem(DEFAULT_ID_PROCEDE.toString())));
     }
 
     @Test
@@ -162,10 +162,10 @@ public class AnexosResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(anexos.getId()))
-            .andExpect(jsonPath("$.archivoanexoContentType").value(DEFAULT_ARCHIVOANEXO_CONTENT_TYPE))
-            .andExpect(jsonPath("$.archivoanexo").value(Base64Utils.encodeToString(DEFAULT_ARCHIVOANEXO)))
             .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
-            .andExpect(jsonPath("$.numero_peticion").value(DEFAULT_NUMERO_PETICION.toString()));
+            .andExpect(jsonPath("$.archivo").value(DEFAULT_ARCHIVO.toString()))
+            .andExpect(jsonPath("$.id_numero_solicitud").value(DEFAULT_ID_NUMERO_SOLICITUD.toString()))
+            .andExpect(jsonPath("$.id_procede").value(DEFAULT_ID_PROCEDE.toString()));
     }
 
     @Test
@@ -185,10 +185,10 @@ public class AnexosResourceIntTest {
         // Update the anexos
         Anexos updatedAnexos = anexosRepository.findOne(anexos.getId());
         updatedAnexos
-            .archivoanexo(UPDATED_ARCHIVOANEXO)
-            .archivoanexoContentType(UPDATED_ARCHIVOANEXO_CONTENT_TYPE)
             .descripcion(UPDATED_DESCRIPCION)
-            .numero_peticion(UPDATED_NUMERO_PETICION);
+            .archivo(UPDATED_ARCHIVO)
+            .id_numero_solicitud(UPDATED_ID_NUMERO_SOLICITUD)
+            .id_procede(UPDATED_ID_PROCEDE);
 
         restAnexosMockMvc.perform(put("/api/anexos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -199,10 +199,10 @@ public class AnexosResourceIntTest {
         List<Anexos> anexosList = anexosRepository.findAll();
         assertThat(anexosList).hasSize(databaseSizeBeforeUpdate);
         Anexos testAnexos = anexosList.get(anexosList.size() - 1);
-        assertThat(testAnexos.getArchivoanexo()).isEqualTo(UPDATED_ARCHIVOANEXO);
-        assertThat(testAnexos.getArchivoanexoContentType()).isEqualTo(UPDATED_ARCHIVOANEXO_CONTENT_TYPE);
         assertThat(testAnexos.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
-        assertThat(testAnexos.getNumero_peticion()).isEqualTo(UPDATED_NUMERO_PETICION);
+        assertThat(testAnexos.getArchivo()).isEqualTo(UPDATED_ARCHIVO);
+        assertThat(testAnexos.getId_numero_solicitud()).isEqualTo(UPDATED_ID_NUMERO_SOLICITUD);
+        assertThat(testAnexos.getId_procede()).isEqualTo(UPDATED_ID_PROCEDE);
     }
 
     @Test

@@ -1,0 +1,83 @@
+<div>
+    <h2>Procedes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="procede.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Procede
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="acta"><span>Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="acuerdo"><span>Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_procede"><span data-translate="oficialiaElectoralApp.procede.id_procede">Id Procede</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notificacion"><span>Notificacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_numero_solicitud"><span data-translate="oficialiaElectoralApp.procede.id_numero_solicitud">Id Numero Solicitud</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="num_acta"><span data-translate="oficialiaElectoralApp.procede.num_acta">Num Acta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="num_acuerdo"><span data-translate="oficialiaElectoralApp.procede.num_acuerdo">Num Acuerdo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="num_notificacion"><span data-translate="oficialiaElectoralApp.procede.num_notificacion">Num Notificacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="procede in vm.procedes track by procede.id">
+                    <td><a ui-sref="procede-detail({id:procede.id})">{{procede.id}}</a></td>
+                    <td>
+                        <a ng-if="procede.acta" ng-click="vm.openFile(procede.actaContentType, procede.acta)">open</a>
+                        <span ng-if="procede.acta">{{procede.actaContentType}}, {{vm.byteSize(procede.acta)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="procede.acuerdo" ng-click="vm.openFile(procede.acuerdoContentType, procede.acuerdo)">open</a>
+                        <span ng-if="procede.acuerdo">{{procede.acuerdoContentType}}, {{vm.byteSize(procede.acuerdo)}}</span>
+                    </td>
+                    <td>{{procede.id_procede}}</td>
+                    <td>
+                        <a ng-if="procede.notificacion" ng-click="vm.openFile(procede.notificacionContentType, procede.notificacion)">open</a>
+                        <span ng-if="procede.notificacion">{{procede.notificacionContentType}}, {{vm.byteSize(procede.notificacion)}}</span>
+                    </td>
+                    <td>{{procede.id_numero_solicitud}}</td>
+                    <td>{{procede.num_acta}}</td>
+                    <td>{{procede.num_acuerdo}}</td>
+                    <td>{{procede.num_notificacion}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="procede-detail({id:procede.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="procede.edit({id:procede.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="procede.delete({id:procede.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

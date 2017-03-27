@@ -19,21 +19,20 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="archivoanexo"><span>Archivoanexo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="descripcion"><span>Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="numero_peticion"><span data-translate="oficialiaElectoralApp.anexos.numero_peticion">Numero Peticion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="archivo"><span>Archivo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_numero_solicitud"><span data-translate="oficialiaElectoralApp.anexos.id_numero_solicitud">Id Numero Solicitud</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id_procede"><span data-translate="oficialiaElectoralApp.anexos.id_procede">Id Procede</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="anexos in vm.anexos track by anexos.id">
                     <td><a ui-sref="anexos-detail({id:anexos.id})">{{anexos.id}}</a></td>
-                    <td>
-                        <a ng-if="anexos.archivoanexo" ng-click="vm.openFile(anexos.archivoanexoContentType, anexos.archivoanexo)">open</a>
-                        <span ng-if="anexos.archivoanexo">{{anexos.archivoanexoContentType}}, {{vm.byteSize(anexos.archivoanexo)}}</span>
-                    </td>
                     <td>{{anexos.descripcion}}</td>
-                    <td>{{anexos.numero_peticion}}</td>
+                    <td>{{anexos.archivo}}</td>
+                    <td>{{anexos.id_numero_solicitud}}</td>
+                    <td>{{anexos.id_procede}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

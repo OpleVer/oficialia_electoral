@@ -118,6 +118,7 @@
                                 zona: null,
                                 distrito: null,
                                 municipio: null,
+                                id_origen: null,
                                 id: null
                             };
                         }

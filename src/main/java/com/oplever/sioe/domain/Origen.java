@@ -28,6 +28,9 @@ public class Origen implements Serializable {
     @Field("municipio")
     private String municipio;
 
+    @Field("id_origen")
+    private String id_origen;
+
     public String getId() {
         return id;
     }
@@ -75,6 +78,19 @@ public class Origen implements Serializable {
         this.municipio = municipio;
     }
 
+    public String getId_origen() {
+        return id_origen;
+    }
+
+    public Origen id_origen(String id_origen) {
+        this.id_origen = id_origen;
+        return this;
+    }
+
+    public void setId_origen(String id_origen) {
+        this.id_origen = id_origen;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -102,6 +118,7 @@ public class Origen implements Serializable {
             ", zona='" + zona + "'" +
             ", distrito='" + distrito + "'" +
             ", municipio='" + municipio + "'" +
+            ", id_origen='" + id_origen + "'" +
             '}';
     }
 }

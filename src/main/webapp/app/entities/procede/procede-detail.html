@@ -1,0 +1,60 @@
+
+<div>
+    <h2><span>Procede</span> {{vm.procede.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Acta</span></dt>
+        <dd>
+            <div ng-if="vm.procede.acta">
+                <a ng-click="vm.openFile(vm.procede.actaContentType, vm.procede.acta)">open</a>
+                {{vm.procede.actaContentType}}, {{vm.byteSize(vm.procede.acta)}}
+            </div>
+        </dd>
+        <dt><span>Acuerdo</span></dt>
+        <dd>
+            <div ng-if="vm.procede.acuerdo">
+                <a ng-click="vm.openFile(vm.procede.acuerdoContentType, vm.procede.acuerdo)">open</a>
+                {{vm.procede.acuerdoContentType}}, {{vm.byteSize(vm.procede.acuerdo)}}
+            </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.procede.id_procede">Id Procede</span></dt>
+        <dd>
+            <span>{{vm.procede.id_procede}}</span>
+        </dd>
+        <dt><span>Notificacion</span></dt>
+        <dd>
+            <div ng-if="vm.procede.notificacion">
+                <a ng-click="vm.openFile(vm.procede.notificacionContentType, vm.procede.notificacion)">open</a>
+                {{vm.procede.notificacionContentType}}, {{vm.byteSize(vm.procede.notificacion)}}
+            </div>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.procede.id_numero_solicitud">Id Numero Solicitud</span></dt>
+        <dd>
+            <span>{{vm.procede.id_numero_solicitud}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.procede.num_acta">Num Acta</span></dt>
+        <dd>
+            <span>{{vm.procede.num_acta}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.procede.num_acuerdo">Num Acuerdo</span></dt>
+        <dd>
+            <span>{{vm.procede.num_acuerdo}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.procede.num_notificacion">Num Notificacion</span></dt>
+        <dd>
+            <span>{{vm.procede.num_notificacion}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="procede-detail.edit({id:vm.procede.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

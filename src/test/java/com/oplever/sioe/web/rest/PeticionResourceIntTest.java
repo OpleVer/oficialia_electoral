@@ -42,9 +42,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = OficialiaElectoralApp.class)
 public class PeticionResourceIntTest {
 
-    private static final String DEFAULT_NUMERO_PETICION = "AAAAAAAAAA";
-    private static final String UPDATED_NUMERO_PETICION = "BBBBBBBBBB";
-
     private static final String DEFAULT_NOMSOLICITANTE = "AAAAAAAAAA";
     private static final String UPDATED_NOMSOLICITANTE = "BBBBBBBBBB";
 
@@ -73,6 +70,36 @@ public class PeticionResourceIntTest {
 
     private static final String DEFAULT_NOM_REPS_SOLICITUD = "AAAAAAAAAA";
     private static final String UPDATED_NOM_REPS_SOLICITUD = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ID_NUMERO_SOLICITUD = "AAAAAAAAAA";
+    private static final String UPDATED_ID_NUMERO_SOLICITUD = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ID_ORIGEN = "AAAAAAAAAA";
+    private static final String UPDATED_ID_ORIGEN = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_OFICIO_PREVENCION = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_OFICIO_PREVENCION = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_OFICIO_PREVENCION_CONTENT_TYPE = "image/png";
+
+    private static final String DEFAULT_NUM_OFICIO_PREVENCION = "AAAAAAAAAA";
+    private static final String UPDATED_NUM_OFICIO_PREVENCION = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_NOTIFICACION_PREVENCION = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_NOTIFICACION_PREVENCION = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_NOTIFICACION_PREVENCION_CONTENT_TYPE = "image/png";
+
+    private static final String DEFAULT_NUM_NOTIFICACION_PREVENCION = "AAAAAAAAAA";
+    private static final String UPDATED_NUM_NOTIFICACION_PREVENCION = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_RESPUESTA_PREVENCION = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_RESPUESTA_PREVENCION = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_RESPUESTA_PREVENCION_CONTENT_TYPE = "image/png";
+
+    private static final String DEFAULT_NUM_RESPUESTA_PREVENCION = "AAAAAAAAAA";
+    private static final String UPDATED_NUM_RESPUESTA_PREVENCION = "BBBBBBBBBB";
 
     @Autowired
     private PeticionRepository peticionRepository;
@@ -111,7 +138,6 @@ public class PeticionResourceIntTest {
      */
     public static Peticion createEntity() {
         Peticion peticion = new Peticion()
-            .numero_peticion(DEFAULT_NUMERO_PETICION)
             .nomsolicitante(DEFAULT_NOMSOLICITANTE)
             .paternosolicitante(DEFAULT_PATERNOSOLICITANTE)
             .maternosolicitante(DEFAULT_MATERNOSOLICITANTE)
@@ -121,7 +147,18 @@ public class PeticionResourceIntTest {
             .actocertificar(DEFAULT_ACTOCERTIFICAR)
             .oficio(DEFAULT_OFICIO)
             .oficioContentType(DEFAULT_OFICIO_CONTENT_TYPE)
-            .nom_reps_solicitud(DEFAULT_NOM_REPS_SOLICITUD);
+            .nom_reps_solicitud(DEFAULT_NOM_REPS_SOLICITUD)
+            .id_numero_solicitud(DEFAULT_ID_NUMERO_SOLICITUD)
+            .id_origen(DEFAULT_ID_ORIGEN)
+            .oficio_prevencion(DEFAULT_OFICIO_PREVENCION)
+            .oficio_prevencionContentType(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE)
+            .num_oficio_prevencion(DEFAULT_NUM_OFICIO_PREVENCION)
+            .notificacion_prevencion(DEFAULT_NOTIFICACION_PREVENCION)
+            .notificacion_prevencionContentType(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE)
+            .num_notificacion_prevencion(DEFAULT_NUM_NOTIFICACION_PREVENCION)
+            .respuesta_prevencion(DEFAULT_RESPUESTA_PREVENCION)
+            .respuesta_prevencionContentType(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE)
+            .num_respuesta_prevencion(DEFAULT_NUM_RESPUESTA_PREVENCION);
         return peticion;
     }
 
@@ -145,7 +182,6 @@ public class PeticionResourceIntTest {
         List<Peticion> peticionList = peticionRepository.findAll();
         assertThat(peticionList).hasSize(databaseSizeBeforeCreate + 1);
         Peticion testPeticion = peticionList.get(peticionList.size() - 1);
-        assertThat(testPeticion.getNumero_peticion()).isEqualTo(DEFAULT_NUMERO_PETICION);
         assertThat(testPeticion.getNomsolicitante()).isEqualTo(DEFAULT_NOMSOLICITANTE);
         assertThat(testPeticion.getPaternosolicitante()).isEqualTo(DEFAULT_PATERNOSOLICITANTE);
         assertThat(testPeticion.getMaternosolicitante()).isEqualTo(DEFAULT_MATERNOSOLICITANTE);
@@ -156,6 +192,17 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getOficio()).isEqualTo(DEFAULT_OFICIO);
         assertThat(testPeticion.getOficioContentType()).isEqualTo(DEFAULT_OFICIO_CONTENT_TYPE);
         assertThat(testPeticion.getNom_reps_solicitud()).isEqualTo(DEFAULT_NOM_REPS_SOLICITUD);
+        assertThat(testPeticion.getId_numero_solicitud()).isEqualTo(DEFAULT_ID_NUMERO_SOLICITUD);
+        assertThat(testPeticion.getId_origen()).isEqualTo(DEFAULT_ID_ORIGEN);
+        assertThat(testPeticion.getOficio_prevencion()).isEqualTo(DEFAULT_OFICIO_PREVENCION);
+        assertThat(testPeticion.getOficio_prevencionContentType()).isEqualTo(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE);
+        assertThat(testPeticion.getNum_oficio_prevencion()).isEqualTo(DEFAULT_NUM_OFICIO_PREVENCION);
+        assertThat(testPeticion.getNotificacion_prevencion()).isEqualTo(DEFAULT_NOTIFICACION_PREVENCION);
+        assertThat(testPeticion.getNotificacion_prevencionContentType()).isEqualTo(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE);
+        assertThat(testPeticion.getNum_notificacion_prevencion()).isEqualTo(DEFAULT_NUM_NOTIFICACION_PREVENCION);
+        assertThat(testPeticion.getRespuesta_prevencion()).isEqualTo(DEFAULT_RESPUESTA_PREVENCION);
+        assertThat(testPeticion.getRespuesta_prevencionContentType()).isEqualTo(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE);
+        assertThat(testPeticion.getNum_respuesta_prevencion()).isEqualTo(DEFAULT_NUM_RESPUESTA_PREVENCION);
     }
 
     @Test
@@ -174,23 +221,6 @@ public class PeticionResourceIntTest {
         // Validate the Alice in the database
         List<Peticion> peticionList = peticionRepository.findAll();
         assertThat(peticionList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    public void checkNumero_peticionIsRequired() throws Exception {
-        int databaseSizeBeforeTest = peticionRepository.findAll().size();
-        // set the field null
-        peticion.setNumero_peticion(null);
-
-        // Create the Peticion, which fails.
-
-        restPeticionMockMvc.perform(post("/api/peticions")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(peticion)))
-            .andExpect(status().isBadRequest());
-
-        List<Peticion> peticionList = peticionRepository.findAll();
-        assertThat(peticionList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -279,6 +309,23 @@ public class PeticionResourceIntTest {
     }
 
     @Test
+    public void checkId_numero_solicitudIsRequired() throws Exception {
+        int databaseSizeBeforeTest = peticionRepository.findAll().size();
+        // set the field null
+        peticion.setId_numero_solicitud(null);
+
+        // Create the Peticion, which fails.
+
+        restPeticionMockMvc.perform(post("/api/peticions")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(peticion)))
+            .andExpect(status().isBadRequest());
+
+        List<Peticion> peticionList = peticionRepository.findAll();
+        assertThat(peticionList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
     public void getAllPeticions() throws Exception {
         // Initialize the database
         peticionRepository.save(peticion);
@@ -288,7 +335,6 @@ public class PeticionResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(peticion.getId())))
-            .andExpect(jsonPath("$.[*].numero_peticion").value(hasItem(DEFAULT_NUMERO_PETICION.toString())))
             .andExpect(jsonPath("$.[*].nomsolicitante").value(hasItem(DEFAULT_NOMSOLICITANTE.toString())))
             .andExpect(jsonPath("$.[*].paternosolicitante").value(hasItem(DEFAULT_PATERNOSOLICITANTE.toString())))
             .andExpect(jsonPath("$.[*].maternosolicitante").value(hasItem(DEFAULT_MATERNOSOLICITANTE.toString())))
@@ -298,7 +344,18 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.[*].actocertificar").value(hasItem(DEFAULT_ACTOCERTIFICAR.toString())))
             .andExpect(jsonPath("$.[*].oficioContentType").value(hasItem(DEFAULT_OFICIO_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].oficio").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO))))
-            .andExpect(jsonPath("$.[*].nom_reps_solicitud").value(hasItem(DEFAULT_NOM_REPS_SOLICITUD.toString())));
+            .andExpect(jsonPath("$.[*].nom_reps_solicitud").value(hasItem(DEFAULT_NOM_REPS_SOLICITUD.toString())))
+            .andExpect(jsonPath("$.[*].id_numero_solicitud").value(hasItem(DEFAULT_ID_NUMERO_SOLICITUD.toString())))
+            .andExpect(jsonPath("$.[*].id_origen").value(hasItem(DEFAULT_ID_ORIGEN.toString())))
+            .andExpect(jsonPath("$.[*].oficio_prevencionContentType").value(hasItem(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].oficio_prevencion").value(hasItem(Base64Utils.encodeToString(DEFAULT_OFICIO_PREVENCION))))
+            .andExpect(jsonPath("$.[*].num_oficio_prevencion").value(hasItem(DEFAULT_NUM_OFICIO_PREVENCION.toString())))
+            .andExpect(jsonPath("$.[*].notificacion_prevencionContentType").value(hasItem(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].notificacion_prevencion").value(hasItem(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PREVENCION))))
+            .andExpect(jsonPath("$.[*].num_notificacion_prevencion").value(hasItem(DEFAULT_NUM_NOTIFICACION_PREVENCION.toString())))
+            .andExpect(jsonPath("$.[*].respuesta_prevencionContentType").value(hasItem(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].respuesta_prevencion").value(hasItem(Base64Utils.encodeToString(DEFAULT_RESPUESTA_PREVENCION))))
+            .andExpect(jsonPath("$.[*].num_respuesta_prevencion").value(hasItem(DEFAULT_NUM_RESPUESTA_PREVENCION.toString())));
     }
 
     @Test
@@ -311,7 +368,6 @@ public class PeticionResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(peticion.getId()))
-            .andExpect(jsonPath("$.numero_peticion").value(DEFAULT_NUMERO_PETICION.toString()))
             .andExpect(jsonPath("$.nomsolicitante").value(DEFAULT_NOMSOLICITANTE.toString()))
             .andExpect(jsonPath("$.paternosolicitante").value(DEFAULT_PATERNOSOLICITANTE.toString()))
             .andExpect(jsonPath("$.maternosolicitante").value(DEFAULT_MATERNOSOLICITANTE.toString()))
@@ -321,7 +377,18 @@ public class PeticionResourceIntTest {
             .andExpect(jsonPath("$.actocertificar").value(DEFAULT_ACTOCERTIFICAR.toString()))
             .andExpect(jsonPath("$.oficioContentType").value(DEFAULT_OFICIO_CONTENT_TYPE))
             .andExpect(jsonPath("$.oficio").value(Base64Utils.encodeToString(DEFAULT_OFICIO)))
-            .andExpect(jsonPath("$.nom_reps_solicitud").value(DEFAULT_NOM_REPS_SOLICITUD.toString()));
+            .andExpect(jsonPath("$.nom_reps_solicitud").value(DEFAULT_NOM_REPS_SOLICITUD.toString()))
+            .andExpect(jsonPath("$.id_numero_solicitud").value(DEFAULT_ID_NUMERO_SOLICITUD.toString()))
+            .andExpect(jsonPath("$.id_origen").value(DEFAULT_ID_ORIGEN.toString()))
+            .andExpect(jsonPath("$.oficio_prevencionContentType").value(DEFAULT_OFICIO_PREVENCION_CONTENT_TYPE))
+            .andExpect(jsonPath("$.oficio_prevencion").value(Base64Utils.encodeToString(DEFAULT_OFICIO_PREVENCION)))
+            .andExpect(jsonPath("$.num_oficio_prevencion").value(DEFAULT_NUM_OFICIO_PREVENCION.toString()))
+            .andExpect(jsonPath("$.notificacion_prevencionContentType").value(DEFAULT_NOTIFICACION_PREVENCION_CONTENT_TYPE))
+            .andExpect(jsonPath("$.notificacion_prevencion").value(Base64Utils.encodeToString(DEFAULT_NOTIFICACION_PREVENCION)))
+            .andExpect(jsonPath("$.num_notificacion_prevencion").value(DEFAULT_NUM_NOTIFICACION_PREVENCION.toString()))
+            .andExpect(jsonPath("$.respuesta_prevencionContentType").value(DEFAULT_RESPUESTA_PREVENCION_CONTENT_TYPE))
+            .andExpect(jsonPath("$.respuesta_prevencion").value(Base64Utils.encodeToString(DEFAULT_RESPUESTA_PREVENCION)))
+            .andExpect(jsonPath("$.num_respuesta_prevencion").value(DEFAULT_NUM_RESPUESTA_PREVENCION.toString()));
     }
 
     @Test
@@ -341,7 +408,6 @@ public class PeticionResourceIntTest {
         // Update the peticion
         Peticion updatedPeticion = peticionRepository.findOne(peticion.getId());
         updatedPeticion
-            .numero_peticion(UPDATED_NUMERO_PETICION)
             .nomsolicitante(UPDATED_NOMSOLICITANTE)
             .paternosolicitante(UPDATED_PATERNOSOLICITANTE)
             .maternosolicitante(UPDATED_MATERNOSOLICITANTE)
@@ -351,7 +417,18 @@ public class PeticionResourceIntTest {
             .actocertificar(UPDATED_ACTOCERTIFICAR)
             .oficio(UPDATED_OFICIO)
             .oficioContentType(UPDATED_OFICIO_CONTENT_TYPE)
-            .nom_reps_solicitud(UPDATED_NOM_REPS_SOLICITUD);
+            .nom_reps_solicitud(UPDATED_NOM_REPS_SOLICITUD)
+            .id_numero_solicitud(UPDATED_ID_NUMERO_SOLICITUD)
+            .id_origen(UPDATED_ID_ORIGEN)
+            .oficio_prevencion(UPDATED_OFICIO_PREVENCION)
+            .oficio_prevencionContentType(UPDATED_OFICIO_PREVENCION_CONTENT_TYPE)
+            .num_oficio_prevencion(UPDATED_NUM_OFICIO_PREVENCION)
+            .notificacion_prevencion(UPDATED_NOTIFICACION_PREVENCION)
+            .notificacion_prevencionContentType(UPDATED_NOTIFICACION_PREVENCION_CONTENT_TYPE)
+            .num_notificacion_prevencion(UPDATED_NUM_NOTIFICACION_PREVENCION)
+            .respuesta_prevencion(UPDATED_RESPUESTA_PREVENCION)
+            .respuesta_prevencionContentType(UPDATED_RESPUESTA_PREVENCION_CONTENT_TYPE)
+            .num_respuesta_prevencion(UPDATED_NUM_RESPUESTA_PREVENCION);
 
         restPeticionMockMvc.perform(put("/api/peticions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -362,7 +439,6 @@ public class PeticionResourceIntTest {
         List<Peticion> peticionList = peticionRepository.findAll();
         assertThat(peticionList).hasSize(databaseSizeBeforeUpdate);
         Peticion testPeticion = peticionList.get(peticionList.size() - 1);
-        assertThat(testPeticion.getNumero_peticion()).isEqualTo(UPDATED_NUMERO_PETICION);
         assertThat(testPeticion.getNomsolicitante()).isEqualTo(UPDATED_NOMSOLICITANTE);
         assertThat(testPeticion.getPaternosolicitante()).isEqualTo(UPDATED_PATERNOSOLICITANTE);
         assertThat(testPeticion.getMaternosolicitante()).isEqualTo(UPDATED_MATERNOSOLICITANTE);
@@ -373,6 +449,17 @@ public class PeticionResourceIntTest {
         assertThat(testPeticion.getOficio()).isEqualTo(UPDATED_OFICIO);
         assertThat(testPeticion.getOficioContentType()).isEqualTo(UPDATED_OFICIO_CONTENT_TYPE);
         assertThat(testPeticion.getNom_reps_solicitud()).isEqualTo(UPDATED_NOM_REPS_SOLICITUD);
+        assertThat(testPeticion.getId_numero_solicitud()).isEqualTo(UPDATED_ID_NUMERO_SOLICITUD);
+        assertThat(testPeticion.getId_origen()).isEqualTo(UPDATED_ID_ORIGEN);
+        assertThat(testPeticion.getOficio_prevencion()).isEqualTo(UPDATED_OFICIO_PREVENCION);
+        assertThat(testPeticion.getOficio_prevencionContentType()).isEqualTo(UPDATED_OFICIO_PREVENCION_CONTENT_TYPE);
+        assertThat(testPeticion.getNum_oficio_prevencion()).isEqualTo(UPDATED_NUM_OFICIO_PREVENCION);
+        assertThat(testPeticion.getNotificacion_prevencion()).isEqualTo(UPDATED_NOTIFICACION_PREVENCION);
+        assertThat(testPeticion.getNotificacion_prevencionContentType()).isEqualTo(UPDATED_NOTIFICACION_PREVENCION_CONTENT_TYPE);
+        assertThat(testPeticion.getNum_notificacion_prevencion()).isEqualTo(UPDATED_NUM_NOTIFICACION_PREVENCION);
+        assertThat(testPeticion.getRespuesta_prevencion()).isEqualTo(UPDATED_RESPUESTA_PREVENCION);
+        assertThat(testPeticion.getRespuesta_prevencionContentType()).isEqualTo(UPDATED_RESPUESTA_PREVENCION_CONTENT_TYPE);
+        assertThat(testPeticion.getNum_respuesta_prevencion()).isEqualTo(UPDATED_NUM_RESPUESTA_PREVENCION);
     }
 
     @Test

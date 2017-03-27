@@ -5,9 +5,9 @@
         .module('oficialiaElectoralApp')
         .controller('AnexosController', AnexosController);
 
-    AnexosController.$inject = ['$state', 'DataUtils', 'Anexos', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    AnexosController.$inject = ['$state', 'Anexos', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function AnexosController($state, DataUtils, Anexos, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function AnexosController($state, Anexos, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
 
@@ -16,8 +16,6 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
-        vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

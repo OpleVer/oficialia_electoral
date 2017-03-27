@@ -115,7 +115,6 @@
                     resolve: {
                         entity: function () {
                             return {
-                                numero_peticion: null,
                                 nomsolicitante: null,
                                 paternosolicitante: null,
                                 maternosolicitante: null,
@@ -126,6 +125,17 @@
                                 oficio: null,
                                 oficioContentType: null,
                                 nom_reps_solicitud: null,
+                                id_numero_solicitud: null,
+                                id_origen: null,
+                                oficio_prevencion: null,
+                                oficio_prevencionContentType: null,
+                                num_oficio_prevencion: null,
+                                notificacion_prevencion: null,
+                                notificacion_prevencionContentType: null,
+                                num_notificacion_prevencion: null,
+                                respuesta_prevencion: null,
+                                respuesta_prevencionContentType: null,
+                                num_respuesta_prevencion: null,
                                 id: null
                             };
                         }

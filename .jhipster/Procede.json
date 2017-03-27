@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "acta",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "acuerdo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "id_procede",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notificacion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "id_numero_solicitud",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "num_acta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "num_acuerdo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "num_notificacion",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "procede",
+    "pagination": "pager"
+}

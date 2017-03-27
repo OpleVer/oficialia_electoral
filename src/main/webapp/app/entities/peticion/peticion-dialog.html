@@ -14,18 +14,6 @@
                     ng-model="vm.peticion.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.numero_peticion" for="field_numero_peticion">Numero Peticion</label>
-            <input type="text" class="form-control" name="numero_peticion" id="field_numero_peticion"
-                    ng-model="vm.peticion.numero_peticion"
-                    required/>
-            <div ng-show="editForm.numero_peticion.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.numero_peticion.$error.required">
-                    This field is required.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_nomsolicitante">Nomsolicitante</label>
             <input type="text" class="form-control" name="nomsolicitante" id="field_nomsolicitante"
                     ng-model="vm.peticion.nomsolicitante"
@@ -37,9 +25,6 @@
                 </p>
             </div>
         </div>
-
-
-
         <div class="form-group">
             <label class="control-label" for="field_paternosolicitante">Paternosolicitante</label>
             <input type="text" class="form-control" name="paternosolicitante" id="field_paternosolicitante"
@@ -124,22 +109,120 @@
                     Add blob
                 </button>
             </div>
-            <input type="hidden" class="form-control" name="oficio" id="field_oficio"ng-model="vm.peticion.oficio"/>
-            <input type="hidden" class="form-control" name="oficioContentType" id="field_oficioContentType"ng-model="vm.peticion.oficioContentType" />
+            <input type="hidden" class="form-control" name="oficio" id="field_oficio"
+                    ng-model="vm.peticion.oficio"
+                    />
+            <input type="hidden" class="form-control" name="oficioContentType" id="field_oficioContentType"
+                    ng-model="vm.peticion.oficioContentType" />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="oficialiaElectoralApp.peticion.nom_reps_solicitud" for="field_nom_reps_solicitud">Nom Reps Solicitud</label>
-            <input type="text" class="form-control" name="nom_reps_solicitud" id="field_nom_reps_solicitud"ng-model="vm.peticion.nom_reps_solicitud"/>
+            <input type="text" class="form-control" name="nom_reps_solicitud" id="field_nom_reps_solicitud"
+                    ng-model="vm.peticion.nom_reps_solicitud"
+                    />
         </div>
-
-
-        <button class="btn btn-primary" ui-sref="anexos.new" >
-            <span class="glyphicon glyphicon-plus"></span>
-            <span >
-                Create new Anexos
-            </span>
-        </button>
-
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.id_numero_solicitud" for="field_id_numero_solicitud">Id Numero Solicitud</label>
+            <input type="text" class="form-control" name="id_numero_solicitud" id="field_id_numero_solicitud"
+                    ng-model="vm.peticion.id_numero_solicitud"
+                    required/>
+            <div ng-show="editForm.id_numero_solicitud.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.id_numero_solicitud.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.id_origen" for="field_id_origen">Id Origen</label>
+            <input type="text" class="form-control" name="id_origen" id="field_id_origen"
+                    ng-model="vm.peticion.id_origen"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setOficio_prevencion($file, vm.peticion)">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.oficio_prevencion" for="field_oficio_prevencion">Oficio Prevencion</label>
+            <div>
+                <div ng-if="vm.peticion.oficio_prevencion" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.oficio_prevencionContentType, vm.peticion.oficio_prevencion)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.oficio_prevencionContentType}}, {{vm.byteSize(vm.peticion.oficio_prevencion)}}</span>
+                    <button type="button" ng-click="vm.peticion.oficio_prevencion=null;vm.peticion.oficio_prevencionContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setOficio_prevencion($file, vm.peticion)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="oficio_prevencion" id="field_oficio_prevencion"
+                    ng-model="vm.peticion.oficio_prevencion"
+                    />
+            <input type="hidden" class="form-control" name="oficio_prevencionContentType" id="field_oficio_prevencionContentType"
+                    ng-model="vm.peticion.oficio_prevencionContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.num_oficio_prevencion" for="field_num_oficio_prevencion">Num Oficio Prevencion</label>
+            <input type="text" class="form-control" name="num_oficio_prevencion" id="field_num_oficio_prevencion"
+                    ng-model="vm.peticion.num_oficio_prevencion"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setNotificacion_prevencion($file, vm.peticion)">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.notificacion_prevencion" for="field_notificacion_prevencion">Notificacion Prevencion</label>
+            <div>
+                <div ng-if="vm.peticion.notificacion_prevencion" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.notificacion_prevencionContentType, vm.peticion.notificacion_prevencion)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.notificacion_prevencionContentType}}, {{vm.byteSize(vm.peticion.notificacion_prevencion)}}</span>
+                    <button type="button" ng-click="vm.peticion.notificacion_prevencion=null;vm.peticion.notificacion_prevencionContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setNotificacion_prevencion($file, vm.peticion)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="notificacion_prevencion" id="field_notificacion_prevencion"
+                    ng-model="vm.peticion.notificacion_prevencion"
+                    />
+            <input type="hidden" class="form-control" name="notificacion_prevencionContentType" id="field_notificacion_prevencionContentType"
+                    ng-model="vm.peticion.notificacion_prevencionContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.num_notificacion_prevencion" for="field_num_notificacion_prevencion">Num Notificacion Prevencion</label>
+            <input type="text" class="form-control" name="num_notificacion_prevencion" id="field_num_notificacion_prevencion"
+                    ng-model="vm.peticion.num_notificacion_prevencion"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setRespuesta_prevencion($file, vm.peticion)">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.respuesta_prevencion" for="field_respuesta_prevencion">Respuesta Prevencion</label>
+            <div>
+                <div ng-if="vm.peticion.respuesta_prevencion" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.peticion.respuesta_prevencionContentType, vm.peticion.respuesta_prevencion)">open</a><br>
+                    <span class="pull-left">{{vm.peticion.respuesta_prevencionContentType}}, {{vm.byteSize(vm.peticion.respuesta_prevencion)}}</span>
+                    <button type="button" ng-click="vm.peticion.respuesta_prevencion=null;vm.peticion.respuesta_prevencionContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setRespuesta_prevencion($file, vm.peticion)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="respuesta_prevencion" id="field_respuesta_prevencion"
+                    ng-model="vm.peticion.respuesta_prevencion"
+                    />
+            <input type="hidden" class="form-control" name="respuesta_prevencionContentType" id="field_respuesta_prevencionContentType"
+                    ng-model="vm.peticion.respuesta_prevencionContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="oficialiaElectoralApp.peticion.num_respuesta_prevencion" for="field_num_respuesta_prevencion">Num Respuesta Prevencion</label>
+            <input type="text" class="form-control" name="num_respuesta_prevencion" id="field_num_respuesta_prevencion"
+                    ng-model="vm.peticion.num_respuesta_prevencion"
+                    />
+        </div>
 
     </div>
     <div class="modal-footer">

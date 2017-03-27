@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "id_numero_solicitud",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "acuerdo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "num_acuerdo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notificacion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "num_notificacion",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "no_presente",
+    "pagination": "pager"
+}

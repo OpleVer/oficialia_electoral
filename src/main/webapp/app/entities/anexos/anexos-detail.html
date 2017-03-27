@@ -4,20 +4,21 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span>Archivoanexo</span></dt>
-        <dd>
-            <div ng-if="vm.anexos.archivoanexo">
-                <a ng-click="vm.openFile(vm.anexos.archivoanexoContentType, vm.anexos.archivoanexo)">open</a>
-                {{vm.anexos.archivoanexoContentType}}, {{vm.byteSize(vm.anexos.archivoanexo)}}
-            </div>
-        </dd>
         <dt><span>Descripcion</span></dt>
         <dd>
             <span>{{vm.anexos.descripcion}}</span>
         </dd>
-        <dt><span data-translate="oficialiaElectoralApp.anexos.numero_peticion">Numero Peticion</span></dt>
+        <dt><span>Archivo</span></dt>
         <dd>
-            <span>{{vm.anexos.numero_peticion}}</span>
+            <span>{{vm.anexos.archivo}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.anexos.id_numero_solicitud">Id Numero Solicitud</span></dt>
+        <dd>
+            <span>{{vm.anexos.id_numero_solicitud}}</span>
+        </dd>
+        <dt><span data-translate="oficialiaElectoralApp.anexos.id_procede">Id Procede</span></dt>
+        <dd>
+            <span>{{vm.anexos.id_procede}}</span>
         </dd>
     </dl>
 

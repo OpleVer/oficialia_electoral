@@ -115,10 +115,10 @@
                     resolve: {
                         entity: function () {
                             return {
-                                archivoanexo: null,
-                                archivoanexoContentType: null,
                                 descripcion: null,
-                                numero_peticion: null,
+                                archivo: null,
+                                id_numero_solicitud: null,
+                                id_procede: null,
                                 id: null
                             };
                         }

@@ -58,6 +58,39 @@
             }
         };
 
+        vm.setOficio_prevencion = function ($file, peticion) {
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        peticion.oficio_prevencion = base64Data;
+                        peticion.oficio_prevencionContentType = $file.type;
+                    });
+                });
+            }
+        };
+
+        vm.setNotificacion_prevencion = function ($file, peticion) {
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        peticion.notificacion_prevencion = base64Data;
+                        peticion.notificacion_prevencionContentType = $file.type;
+                    });
+                });
+            }
+        };
+
+        vm.setRespuesta_prevencion = function ($file, peticion) {
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        peticion.respuesta_prevencion = base64Data;
+                        peticion.respuesta_prevencionContentType = $file.type;
+                    });
+                });
+            }
+        };
+
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }
